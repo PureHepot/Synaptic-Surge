@@ -60,6 +60,7 @@ public class LaserRefractor : BaseLaserInstrument
         LaserManager.Instance.ChangeLaunchState(laser, true);
         laser.gameObject.SetActive(true);
         laser.Color = lazer.Color;
+        laser.SetColor(laser.Color);
     }
 
     public override void ResetLaser()

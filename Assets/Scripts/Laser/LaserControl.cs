@@ -26,7 +26,7 @@ public class HitInfo
 
 public class LaserControl : MonoBehaviour
 {
-    private static Dictionary<LaserColor, Color> laserColors = new Dictionary<LaserColor, Color>
+    public static Dictionary<LaserColor, Color> laserColors = new Dictionary<LaserColor, Color>
     {
         {LaserColor.White, new Color(1,1,1) },
         {LaserColor.Red, new Color(1,0,0) },
@@ -37,7 +37,10 @@ public class LaserControl : MonoBehaviour
         {LaserColor.Violet, new Color(1,0,1) }
     };
 
-    //当前发射的方向
+    //激光发射方向
+    private Vector2 laserDirection;
+
+    //激光获取的信息
     public List<HitInfo> hitInfoes = new List<HitInfo>();
 
     private int hitCount;
@@ -103,6 +106,19 @@ public class LaserControl : MonoBehaviour
             r.material.SetColor("_EmissionColor", laserColors[color] * (colorIntensity + beamColorEnhance));
         }
     }
+
+    public void SetColor(LaserColor color)
+    {
+        lineRenderer.material.color = laserColors[color] * colorIntensity;
+
+        ParticleSystem[] particles = GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem particle in particles)
+        {
+            Renderer r = particle.GetComponent<Renderer>();
+            r.material.SetColor("_EmissionColor", laserColors[color] * (colorIntensity + beamColorEnhance));
+        }
+    }
+
 
     private void Start()
     {

@@ -27,7 +27,6 @@ public class LaserMirror : BaseLaserInstrument
         //});
     }
 
-    private float counter;
     private void Update()
     {
         

@@ -7,14 +7,20 @@ using UnityEngine.Events;
 public class BaseLaserInstrument : MonoBehaviour
 {
     //激光特性
-    public LaserControl laser;
+    protected LaserControl laser;
     public LaserControl hitLaser;
-    protected LaserColor laserColor = LaserColor.White;
+    public LaserColor laserColor = LaserColor.White;
 
 
     //仪器特性
     protected bool isLaserStart = false;
     protected bool isLaserEnd = false;
+    protected bool isPowered = false;
+    public bool IsPowered
+    {
+        get { return isPowered; }
+        set { isPowered = value; }
+    }
 
     private void Awake()
     {
@@ -42,6 +48,17 @@ public class BaseLaserInstrument : MonoBehaviour
     {
 
     }
+
+    public virtual void PowerOn()
+    {
+
+    }
+
+    public virtual void PowerOff()
+    {
+
+    }
+
     public virtual void OnLaserHit(LaserControl laser)
     {
 
@@ -56,10 +73,16 @@ public class BaseLaserInstrument : MonoBehaviour
     {
         laser = Instantiate(Resources.Load<GameObject>("Prefabs/Laser/Laser"), transform).GetComponent<LaserControl>();
         laser.Color = laserColor;
+        laser.SetColor(laserColor);
         laser.gameObject.SetActive(false);
     }
 
     public virtual void ResetLaser()
+    {
+
+    }
+
+    public virtual void ResetPowerSys()
     {
 
     }
