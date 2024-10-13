@@ -9,7 +9,7 @@ public class LaserTower : BaseLaserInstrument
     private Vector3 laserDirection;
 
 
-    public void Awake()
+    protected override void OnAwake()
     {
         isLaserStart = true;
         isLaserEnd = false;
@@ -17,7 +17,7 @@ public class LaserTower : BaseLaserInstrument
         laserDirection = (gunPos.localPosition - transform.position).normalized;
     }
 
-    private void Start()
+    protected override void OnStart()
     {
         //Éú³É¼¤¹â
         LaserInit(gunPos);

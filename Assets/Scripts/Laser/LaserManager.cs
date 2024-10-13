@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class LaserInfo
 {
-    public BaseLaserInstrument laserInstrument;
+    public List<BaseLaserInstrument> laserInstruments = new List<BaseLaserInstrument>();
     public LaserColor color;
     public bool isLaunch;
     public bool isHit;
@@ -24,18 +25,7 @@ public class LaserManager : MonoBehaviour
 
     private void Update()
     {
-        counter += Time.deltaTime;
-        if(counter >= 0.1f)
-        {
-            foreach(var pair in valuePairs)
-            {
-                if (pair.Value.isHit)
-                {
-                    pair.Value.laserInstrument.OnLaserHit();
-                }
-            }
-            counter = 0;
-        }
+        
     }
 
 
@@ -58,10 +48,16 @@ public class LaserManager : MonoBehaviour
         if (valuePairs.ContainsKey(laser))
             valuePairs[laser].isHit = val;
     }
-    public void ChangeObjectState(LaserControl laser, BaseLaserInstrument val)
+    public void ChangeObjectState(LaserControl laser)
     {
         if (valuePairs.ContainsKey(laser))
-            valuePairs[laser].laserInstrument = val;
+        {
+            valuePairs[laser].laserInstruments.Clear();
+            foreach (HitInfo item in laser.hitInfoes)
+            {
+                valuePairs[laser].laserInstruments.Add(item.hitObject);
+            }
+        }
     }
 
 
@@ -74,10 +70,12 @@ public class LaserManager : MonoBehaviour
                 return false;
             }
 
-            if (laserInstrument != valuePairs[laser].laserInstrument)
-                return false;
+            foreach (BaseLaserInstrument item in valuePairs[laser].laserInstruments)
+            {
+                if (item == laserInstrument)
+                    return true;
+            }
 
-            return true;
         }
         return false;
     }

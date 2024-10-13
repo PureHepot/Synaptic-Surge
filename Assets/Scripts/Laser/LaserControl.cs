@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum LaserColor
@@ -19,6 +20,8 @@ public class HitInfo
     public Vector2 launchDirection;
     public Vector2 hitSurfaceNormal;
     public Vector2 hitPoint;
+    public BaseLaserInstrument hitObject;
+
 }
 
 public class LaserControl : MonoBehaviour
@@ -35,7 +38,14 @@ public class LaserControl : MonoBehaviour
     };
 
     //当前发射的方向
-    public HitInfo hitInfo = new HitInfo();
+    public List<HitInfo> hitInfoes = new List<HitInfo>();
+
+    private int hitCount;
+    public int HitCount
+    {
+        get { return hitCount; }
+        set { hitCount = value; }
+    }
 
     [SerializeField] private LaserColor color;
     public LaserColor Color
@@ -69,6 +79,13 @@ public class LaserControl : MonoBehaviour
         {
             lineRenderer = value;
         }
+    }
+
+    private bool isStop = false;
+    public bool IsStop
+    {
+        get { return isStop; }
+        set { isStop = value; }
     }
 
     private void Awake()
@@ -124,34 +141,80 @@ public class LaserControl : MonoBehaviour
 
         float length = maxLength;
         float laserEndRotation = 180;
+        Vector2 endPosition = startPosition + length * direction;
 
         if (hit)//通过反射检测获取两点之间的距离
         {
-            hitInfo.hitPoint = hit.point;
-            hitInfo.hitSurfaceNormal = hit.normal;
-            hitInfo.launchDirection = direction;
-
-            BaseLaserInstrument laserInstrument = hit.transform.GetComponent<BaseLaserInstrument>();
-            laserInstrument.hitLaser = this;
-            laserInstrument.OnLaserHit();
+            RoadDFS(direction, hit);
+            hitCount++;
+            
             LaserManager.Instance.ChangeHitState(this, true);
-            LaserManager.Instance.ChangeObjectState(this, laserInstrument);
-            length = (hit.point - startPosition).magnitude;
+
+            //激光进行深搜
+            hit.transform.GetComponent<BaseLaserInstrument>().OnLaserHit(this);
             laserEndRotation = Vector2.Angle(direction, hit.normal);//获取发射方向与法线的角度
 
-            lineRenderer.SetPosition(1, hit.point);//设置激光落点
+            //获取撞击点后进行路线设置
+            if(!isStop)
+            {
+                lineRenderer.positionCount = hitCount + 2;
+                for (int i = 1; i <= hitCount; i++)
+                {
+                    lineRenderer.SetPosition(i, hitInfoes[i - 1].hitPoint);
+                }
+                endPosition = hitInfoes[hitCount - 1].hitPoint + hitInfoes[hitCount].launchDirection * length;
+
+                lineRenderer.SetPosition(hitCount + 1, endPosition);
+            }
+            else
+            {
+                lineRenderer.positionCount = hitCount + 1;
+                for (int i = 1; i <= hitCount; i++)
+                {
+                    lineRenderer.SetPosition(i, hitInfoes[i - 1].hitPoint);
+                }
+                endPosition = hitInfoes[hitCount - 1].hitPoint;
+            }
+
         }
         else
         {
+            lineRenderer.positionCount = 2;
             LaserManager.Instance.ChangeHitState(this, false);
-            LaserManager.Instance.ChangeObjectState(this, null);
             lineRenderer.SetPosition(1, startPosition + length * direction);
         }
 
-        Vector2 endPosition = startPosition + length * direction;
+        hitCount = 0;
+        LaserManager.Instance.ChangeObjectState(this);
         startVFX.transform.position = startPosition;
         endVFX.transform.position = endPosition;
         endVFX.transform.rotation = Quaternion.Euler(0, 0, laserEndRotation);
+    }
+
+    public void RoadDFS(Vector2 direction, RaycastHit2D hit)
+    {
+        BaseLaserInstrument laserInstrument = new BaseLaserInstrument();
+        if (hit.transform != null)
+        {
+            laserInstrument = hit.transform.GetComponent<BaseLaserInstrument>();
+            laserInstrument.hitLaser = this;
+        }
+
+        if (hitInfoes.Count <= hitCount)
+            hitInfoes.Add(new HitInfo()
+            {
+                hitPoint = hit.point - 0.1f * direction,
+                hitSurfaceNormal = hit.normal,
+                launchDirection = direction,
+                hitObject = laserInstrument
+            });
+        else
+        {
+            hitInfoes[hitCount].hitPoint = hit.point - 0.1f * direction;
+            hitInfoes[hitCount].hitSurfaceNormal = hit.normal;
+            hitInfoes[hitCount].launchDirection = direction;
+            hitInfoes[hitCount].hitObject = laserInstrument;
+        }
     }
 
     public void HideVFX(int i)

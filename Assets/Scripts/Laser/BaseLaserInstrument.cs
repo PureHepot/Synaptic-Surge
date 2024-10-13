@@ -16,9 +16,33 @@ public class BaseLaserInstrument : MonoBehaviour
     protected bool isLaserStart = false;
     protected bool isLaserEnd = false;
 
+    private void Awake()
+    {
+        OnAwake();
+    }
+
+    private void Start()
+    {
+        OnStart();
+    }
+
+
+    protected virtual void OnAwake()
+    {
+
+    }
+
+    protected virtual void OnStart()
+    {
+
+    }
 
     //被激光击中效果
     public virtual void OnLaserHit()
+    {
+
+    }
+    public virtual void OnLaserHit(LaserControl laser)
     {
 
     }
@@ -28,7 +52,7 @@ public class BaseLaserInstrument : MonoBehaviour
         return isLaserEnd;
     }
 
-    protected void LaserInit(Transform transform)
+    protected virtual void LaserInit(Transform transform)
     {
         laser = Instantiate(Resources.Load<GameObject>("Prefabs/Laser/Laser"), transform).GetComponent<LaserControl>();
         laser.Color = laserColor;

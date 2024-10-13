@@ -1,42 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class LaserMirror : BaseLaserInstrument
 {
     //反射镜弹射方向
     Vector2 newDirection;
 
-    private void Awake()
+    protected override void OnAwake()
     {
         isLaserStart = false;
         isLaserEnd = false;
     }
 
-    private void Start()
+    protected override void OnStart()
     {
-        LaserInit(transform);
-        LaserManager.Instance.Register(laser, new LaserInfo()
-        {
-            color = laserColor,
-            isLaunch = false,
-            isHit = false
-        });
+        //LaserInit(transform);
+        //LaserManager.Instance.Register(laser, new LaserInfo()
+        //{
+        //    color = laserColor,
+        //    isLaunch = false,
+        //    isHit = false
+        //});
     }
 
     private float counter;
     private void Update()
     {
-        counter += Time.deltaTime;
-        if (counter > 0.1f)
-        {
-            counter = 0f;
-            if (hitLaser != null && LaserManager.Instance.Check(hitLaser, this) == false)
-            {
-                ResetLaser();
-            }
-        }
+        
     }
 
     public override void OnLaserHit()
@@ -44,14 +38,30 @@ public class LaserMirror : BaseLaserInstrument
         laser.gameObject.SetActive(true);
         laser.HideVFX(0);
 
-        newDirection = Vector2.Reflect(hitLaser.hitInfo.hitPoint, hitLaser.hitInfo.hitSurfaceNormal);
-        laser.UpdatePosition(hitLaser.hitInfo.hitPoint, newDirection);
+        //newDirection = Vector2.Reflect(hitLaser.hitInfo.launchDirection, hitLaser.hitInfo.hitSurfaceNormal);
+        //laser.UpdatePosition(hitLaser.hitInfo.hitPoint, newDirection);
 
     }
 
-    public override void ResetLaser()
+    public override void OnLaserHit(LaserControl laser)
     {
-        laser.gameObject.SetActive(false);
+        laser.IsStop = false;
+
+        newDirection = Vector2.Reflect(laser.hitInfoes[laser.HitCount-1].launchDirection, laser.hitInfoes[laser.HitCount - 1].hitSurfaceNormal);
+        
+        RaycastHit2D hit = Physics2D.Raycast(laser.hitInfoes[laser.HitCount - 1].hitPoint, newDirection);
+        laser.RoadDFS(newDirection, hit);
+
+        if (hit && hit.transform != this)
+        {
+            laser.HitCount++;//撞到了就记录
+
+            BaseLaserInstrument laserInstrument = hit.transform.GetComponent<BaseLaserInstrument>();
+            laserInstrument.hitLaser = laser;
+
+            laserInstrument.OnLaserHit(laser);
+        }
     }
+
 
 }
