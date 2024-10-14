@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Unity.VisualScripting.StickyNote;
 
 public enum LaserColor
 {
@@ -21,7 +22,7 @@ public class HitInfo
     public Vector2 hitSurfaceNormal;
     public Vector2 hitPoint;
     public BaseLaserInstrument hitObject;
-
+    
 }
 
 public class LaserControl : MonoBehaviour
@@ -256,5 +257,7 @@ public class LaserControl : MonoBehaviour
             endVFX.gameObject.SetActive(true);
         }
     }
+
+    
 
 }

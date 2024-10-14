@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,11 +17,17 @@ public class BaseLaserInstrument : MonoBehaviour
     protected bool isLaserStart = false;
     protected bool isLaserEnd = false;
     protected bool isPowered = false;
+    protected bool isRotatable = false;
+    private bool isMouseOver = false;
     public bool IsPowered
     {
         get { return isPowered; }
         set { isPowered = value; }
     }
+
+
+    protected float rotateAngle = 0;
+    
 
     private void Awake()
     {
@@ -32,6 +39,21 @@ public class BaseLaserInstrument : MonoBehaviour
         OnStart();
     }
 
+    private void Update()
+    {
+        OnFrame();
+    }
+
+    protected void OnMouseEnter()
+    {
+        isMouseOver = true; // 鼠标进入物体
+    }
+
+    protected void OnMouseExit()
+    {
+        isMouseOver = false; // 鼠标离开物体
+    }
+
 
     protected virtual void OnAwake()
     {
@@ -41,6 +63,19 @@ public class BaseLaserInstrument : MonoBehaviour
     protected virtual void OnStart()
     {
 
+    }
+
+    protected virtual void OnFrame()
+    {
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+
+        if (isMouseOver)
+            if (scrollInput != 0 && isRotatable)
+            {
+                Quaternion targetRotation = Quaternion.Euler(0, 0, rotateAngle += scrollInput * 40);
+
+                transform.rotation = targetRotation;
+            }
     }
 
     //被激光击中效果
@@ -79,7 +114,7 @@ public class BaseLaserInstrument : MonoBehaviour
 
     public virtual void ResetLaser()
     {
-
+        laser.gameObject.SetActive(false);
     }
 
     public virtual void ResetPowerSys()

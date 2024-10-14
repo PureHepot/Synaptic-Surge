@@ -29,8 +29,9 @@ public class LaserTower : BaseLaserInstrument
         });
     }
 
-    private void Update()
+    protected override void OnFrame()
     {
-        
+        base.OnFrame();
     }
+    
 }

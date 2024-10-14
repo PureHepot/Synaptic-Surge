@@ -8,14 +8,13 @@ public class LaserDiffuser : BaseLaserInstrument
 
     private Transform[] gunPoses = new Transform[3];
 
-    private float rotateAngle = 0;
-
     protected override void OnAwake()
     {
         isLaserStart = true;
         isLaserEnd = true;
+        isRotatable = true;
 
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             gunPoses[i] = transform.Find($"GunPos{i+1}");
         }
@@ -36,16 +35,11 @@ public class LaserDiffuser : BaseLaserInstrument
         }
     }
 
-    private void OnMouseDown()
-    {
-        Quaternion targetRotation = Quaternion.Euler(0, 0, rotateAngle -= 45);
-
-        transform.rotation = targetRotation;
-    }
 
     private float counter;
-    private void Update()
+    protected override void OnFrame()
     {
+        base.OnFrame();
         counter += Time.deltaTime;
         if (counter > 0.1f)
         {
@@ -117,6 +111,8 @@ public class LaserDiffuser : BaseLaserInstrument
     {
         for (int i = 0; i < 3; i++)
         {
+            LaserManager.Instance.ChangeHitState(lasers[i], false);
+            LaserManager.Instance.ChangeLaunchState(lasers[i], false);
             lasers[i].gameObject.SetActive(false);
         }
     }

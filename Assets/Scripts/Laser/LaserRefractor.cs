@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LaserRefractor : BaseLaserInstrument
 {
-    private float rotateAngle = 0;
     private Transform gunPos;
 
 
@@ -12,6 +11,7 @@ public class LaserRefractor : BaseLaserInstrument
     {
         isLaserStart = true;
         isLaserEnd = true;
+        isRotatable = true;
         gunPos = transform.Find("GunPos");
     }
 
@@ -27,8 +27,9 @@ public class LaserRefractor : BaseLaserInstrument
     }
 
     private float counter;
-    private void Update()
+    protected override void OnFrame()
     {
+        base.OnFrame();
         counter += Time.deltaTime;
         if (counter > 0.1f)
         {
@@ -40,12 +41,6 @@ public class LaserRefractor : BaseLaserInstrument
         }
     }
 
-    private void OnMouseDown()
-    {
-        Quaternion targetRotation = Quaternion.Euler(0, 0, rotateAngle += 45);
-
-        transform.rotation = targetRotation;
-    }
 
     protected override void LaserInit(Transform transform)
     {
@@ -65,6 +60,8 @@ public class LaserRefractor : BaseLaserInstrument
 
     public override void ResetLaser()
     {
+        LaserManager.Instance.ChangeHitState(laser, false);
+        LaserManager.Instance.ChangeLaunchState(laser, false);
         laser.gameObject.SetActive(false);
     }
 }
