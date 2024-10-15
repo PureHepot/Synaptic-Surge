@@ -43,7 +43,9 @@ GameObject:
   - component: {fileID: 5936731854196459559}
   - component: {fileID: 5951820990570064969}
   - component: {fileID: 7753166685425357857}
-  m_Layer: 0
+  - component: {fileID: 4917371209099769774}
+  - component: {fileID: 864547819583346823}
+  m_Layer: 3
   m_Name: Point2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,6 +178,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+--- !u!50 &4917371209099769774
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757139791079735616}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 100
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!255 &864547819583346823
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757139791079735616}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 7330398747870623817}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -0.36599997, y: -0.2189998}
+  m_DampingRatio: 0
+  m_Frequency: 0
 --- !u!1 &5816716683016328386
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +236,9 @@ GameObject:
   - component: {fileID: 2516914591401361447}
   - component: {fileID: 7678120602701567091}
   - component: {fileID: 3963560589382513508}
-  m_Layer: 0
+  - component: {fileID: 6360265273320299164}
+  - component: {fileID: 6232353654005790614}
+  m_Layer: 3
   m_Name: Point1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,6 +371,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+--- !u!50 &6360265273320299164
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816716683016328386}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 100
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!255 &6232353654005790614
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816716683016328386}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 7330398747870623817}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -0.36599997, y: 0.23999988}
+  m_DampingRatio: 0
+  m_Frequency: 0
 --- !u!1 &6733311235168233739
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +429,7 @@ GameObject:
   - component: {fileID: 5687794686362329798}
   - component: {fileID: 4493813062917757172}
   - component: {fileID: 3837989409762553580}
+  - component: {fileID: 7330398747870623817}
   m_Layer: 0
   m_Name: Synthesizer
   m_TagString: Untagged
@@ -459,3 +556,30 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49999997
+--- !u!50 &7330398747870623817
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733311235168233739}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 100
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

@@ -19,6 +19,7 @@ public class BaseLaserInstrument : MonoBehaviour
     protected bool isPowered = false;
     protected bool isRotatable = false;
     private bool isMouseOver = false;
+    protected bool isMovable = false;
     public bool IsPowered
     {
         get { return isPowered; }
@@ -52,6 +53,14 @@ public class BaseLaserInstrument : MonoBehaviour
     protected void OnMouseExit()
     {
         isMouseOver = false; // 鼠标离开物体
+    }
+
+    protected void OnMouseDrag()
+    {
+        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 moveVec = (cursorPos - (Vector2)transform.position)*10;
+        if (moveVec.magnitude < 2f) moveVec = moveVec.normalized * 2;
+        GetComponent<Rigidbody2D>().velocity = moveVec;
     }
 
 
@@ -114,6 +123,8 @@ public class BaseLaserInstrument : MonoBehaviour
 
     public virtual void ResetLaser()
     {
+        LaserManager.Instance.ChangeHitState(laser, false);
+        LaserManager.Instance.ChangeLaunchState(laser, false);
         laser.gameObject.SetActive(false);
     }
 

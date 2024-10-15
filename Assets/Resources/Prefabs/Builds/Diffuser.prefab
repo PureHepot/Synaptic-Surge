@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 9073174285977423076}
   - component: {fileID: 5078973070677812594}
   - component: {fileID: 855041613947636194}
+  - component: {fileID: 1305702307839995097}
   m_Layer: 0
   m_Name: Diffuser
   m_TagString: Untagged
@@ -170,6 +171,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+--- !u!50 &1305702307839995097
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590459220507053910}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 100
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &2928456787884785172
 GameObject:
   m_ObjectHideFlags: 0

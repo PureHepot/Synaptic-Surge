@@ -13,6 +13,7 @@ public class LaserDiffuser : BaseLaserInstrument
         isLaserStart = true;
         isLaserEnd = true;
         isRotatable = true;
+        isMovable = true;
 
         for (int i = 0; i < 3; i++)
         {

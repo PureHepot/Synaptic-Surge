@@ -60,6 +60,7 @@ public class LaserSynthesizer : BaseLaserInstrument
         isLaserStart = true;
         isLaserEnd = false;
         isRotatable = true;
+        isMovable = true;
 
         points = new List<Transform>();
         for (int i = 1; i <= 2; i++)
@@ -81,7 +82,22 @@ public class LaserSynthesizer : BaseLaserInstrument
         });
     }
 
-    
+    private float counter;
+    protected override void OnFrame()
+    {
+        base.OnFrame();
+        counter += Time.deltaTime;
+        if (counter > 0.1f)
+        {
+            counter = 0f;
+            for (int i = 0; i < points.Count; i++)
+                if (points[i].GetComponent<LaserOther>().hitLaser == null)
+                {
+                    ResetLaser();
+                }
+        }
+    }
+
 
     public void MixLaser()
     {

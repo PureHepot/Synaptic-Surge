@@ -12,6 +12,7 @@ public class LaserRefractor : BaseLaserInstrument
         isLaserStart = true;
         isLaserEnd = true;
         isRotatable = true;
+        isMovable = true;
         gunPos = transform.Find("GunPos");
     }
 
@@ -58,10 +59,4 @@ public class LaserRefractor : BaseLaserInstrument
         laser.SetColor(laser.Color);
     }
 
-    public override void ResetLaser()
-    {
-        LaserManager.Instance.ChangeHitState(laser, false);
-        LaserManager.Instance.ChangeLaunchState(laser, false);
-        laser.gameObject.SetActive(false);
-    }
 }
