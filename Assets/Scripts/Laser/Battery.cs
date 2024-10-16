@@ -7,12 +7,33 @@ public class Battery : BaseLaserInstrument
     public GameObject poweredObj;
     public LaserColor powerColor;
 
+    private bool isOnceShot = true;
+
+    //需要的照射时间
+    public float requireTime = 1f;
+    private float lastTime;
+    private float addTime;
 
     public override void OnLaserHit(LaserControl laser)
     {
+        if (isOnceShot)
+        {
+            isOnceShot = false;
+            lastTime = Time.time;
+        }
+        else
+        {
+            addTime += Time.time - lastTime;
+            lastTime = Time.time;
+        }
+
         laser.IsStop = true;
-        if(laser.Color == powerColor)
+        if(laser.Color == powerColor && addTime > requireTime)
+        {
+            addTime = 0;
             PowerOn();
+        }
+            
     }
 
     public override void PowerOn()
@@ -22,7 +43,9 @@ public class Battery : BaseLaserInstrument
     }
     public override void PowerOff()
     {
+        addTime = 0;
         isPowered = false;
+        isOnceShot = true;
         poweredObj.GetComponent<BaseLaserInstrument>().PowerOff();
     }
 

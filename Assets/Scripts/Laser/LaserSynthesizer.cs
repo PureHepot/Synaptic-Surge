@@ -28,6 +28,7 @@ public class LaserSynthesizer : BaseLaserInstrument
     public override void OnLaserHit(LaserControl laser)
     {
         base.OnLaserHit(laser);
+        laser.IsStop = true;
     }
 
     public override void PowerOff()
