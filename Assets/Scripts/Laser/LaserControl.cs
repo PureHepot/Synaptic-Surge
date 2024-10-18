@@ -65,7 +65,7 @@ public class LaserControl : MonoBehaviour
     private float beamColorEnhance = 1f;
 
     [SerializeField] private float maxLength = 100;
-    [SerializeField] private float thickness = 8;
+    [SerializeField] private float thickness = 5;
     [SerializeField] private float noiseScale = 3;
     [SerializeField] private GameObject startVFX;
     [SerializeField] private GameObject endVFX;
@@ -153,6 +153,8 @@ public class LaserControl : MonoBehaviour
         rotationZ *= Mathf.Deg2Rad;
 
         Vector2 direction = new Vector2(Mathf.Cos(rotationZ), Mathf.Sin(rotationZ));
+
+        // ------------->||
 
         RaycastHit2D hit = Physics2D.Raycast(startPosition, direction.normalized);
 

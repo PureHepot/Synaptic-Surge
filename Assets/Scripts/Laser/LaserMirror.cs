@@ -51,7 +51,7 @@ public class LaserMirror : BaseLaserInstrument
         RaycastHit2D hit = Physics2D.Raycast(laser.hitInfoes[laser.HitCount - 1].hitPoint, newDirection);
         laser.RoadDFS(newDirection, hit);
 
-        if (hit && hit.transform != this)
+        if (hit && hit.transform != this && laser.HitCount <= 30)
         {
             laser.HitCount++;//撞到了就记录
 

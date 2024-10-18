@@ -57,10 +57,13 @@ public class BaseLaserInstrument : MonoBehaviour
 
     protected void OnMouseDrag()
     {
-        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 moveVec = (cursorPos - (Vector2)transform.position)*10;
-        if (moveVec.magnitude < 2f) moveVec = moveVec.normalized * 2;
-        GetComponent<Rigidbody2D>().velocity = moveVec;
+        if (isMovable)
+        {
+            Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 moveVec = (cursorPos - (Vector2)transform.position) * 10;
+            if (moveVec.magnitude < 2f) moveVec = moveVec.normalized * 2;
+            GetComponent<Rigidbody2D>().velocity = moveVec;
+        }
     }
 
 

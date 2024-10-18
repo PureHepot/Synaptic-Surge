@@ -186,7 +186,7 @@ MonoBehaviour:
   color: 2
   colorIntensity: 1.5
   maxLength: 100
-  thickness: 8
+  thickness: 5
   noiseScale: 3
   startVFX: {fileID: 5469535125080819948}
   endVFX: {fileID: 902408614993664003}
@@ -241,6 +241,18 @@ PrefabInstance:
     - target: {fileID: 533351175408170249, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
       propertyPath: m_Name
       value: StartVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008324885828360328, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008324885828360328, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008324885828360328, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -308,6 +320,22 @@ PrefabInstance:
     - target: {fileID: 9033189048774210734, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
       propertyPath: m_Name
       value: EndVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

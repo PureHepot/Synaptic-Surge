@@ -28,6 +28,7 @@ public class LaserObstacle : BaseLaserInstrument
     {
         isLaserStart = false;
         isLaserEnd = true;
+        isMovable = false;
     }
 
     protected override void OnStart()
