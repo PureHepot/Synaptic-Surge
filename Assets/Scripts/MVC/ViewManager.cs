@@ -161,6 +161,11 @@ public class ViewManager : MonoBehaviour
 
     }
 
+    public void Close(ViewType key, params object[] args)
+    {
+        Close((int)key, args);
+    }
+
     /// <summary>
     /// ´ò¿ªÃæ°å
     /// </summary>

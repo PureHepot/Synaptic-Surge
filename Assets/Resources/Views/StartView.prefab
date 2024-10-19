@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_Color: {r: 0.27450982, g: 0.27450982, b: 0.27450982, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -261,7 +261,6 @@ GameObject:
   - component: {fileID: 1514262650681067742}
   - component: {fileID: 3689468238472901275}
   - component: {fileID: 4334411920345311631}
-  - component: {fileID: 7567300320204428189}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -370,32 +369,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3689468238472901275}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7567300320204428189}
-        m_TargetAssemblyTypeName: LoadLevel, Assembly-CSharp
-        m_MethodName: Loadlevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7567300320204428189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3391558361637708790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a31a5710bbe24a242b6f7c5315acec94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
+      m_Calls: []
 --- !u!1 &5563313861595836035
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,7 +650,6 @@ GameObject:
   - component: {fileID: 5738489529786742257}
   - component: {fileID: 7996625510591682903}
   - component: {fileID: 7421764187478283559}
-  - component: {fileID: 8270027822257212178}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -785,31 +758,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7996625510591682903}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8270027822257212178}
-        m_TargetAssemblyTypeName: EixtGame, Assembly-CSharp
-        m_MethodName: QuitGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &8270027822257212178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7697750404508445532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d24f6a226bc0b740abf1b9980cc6864, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls: []
 --- !u!1 &8783732754704176784
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +906,7 @@ GameObject:
   - component: {fileID: 4407274477042646906}
   - component: {fileID: 4755882288469680963}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -13,19 +13,19 @@ public class StartView : BaseView
         base.OnAwake();
 
         Find<Button>("bg/StartButton").onClick.AddListener(onStartGameBtn);
-        Find<Button>("setBtn").onClick.AddListener(onSetBtn);
+        Find<Button>("bg/ContinueButton").onClick.AddListener(onContinueBtn);
         Find<Button>("bg/ExitButton").onClick.AddListener(onQuitGameBtn);
     }
 
     //开始游戏
     private void onStartGameBtn()
     {
-
+        LevelLoader.Instance.LoadNextLevel("ChoiceMenu");
     }
     //打开设置
-    private void onSetBtn()
+    private void onContinueBtn()
     {
-        //ApplyFunc(Defines.OpenSetView);
+        
     }
     //退出游戏
     private void onQuitGameBtn()

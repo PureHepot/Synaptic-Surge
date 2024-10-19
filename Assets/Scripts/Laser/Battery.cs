@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Battery : BaseLaserInstrument
 {
     public GameObject poweredObj;
     public LaserColor powerColor;
 
+    public bool connect2Build = true;
+    public UnityEvent powerOnEvent;
+    public UnityEvent powerOffEvent;
+
     private bool isOnceShot = true;
+
 
     //需要的照射时间
     public float requireTime = 1f;
@@ -39,14 +45,24 @@ public class Battery : BaseLaserInstrument
     public override void PowerOn()
     {
         isPowered = true;
-        poweredObj.GetComponent<BaseLaserInstrument>().PowerOn();
+        if(connect2Build)
+            poweredObj.GetComponent<BaseLaserInstrument>().PowerOn();
+        else
+        {
+            powerOnEvent?.Invoke();
+        }
     }
     public override void PowerOff()
     {
         addTime = 0;
         isPowered = false;
         isOnceShot = true;
-        poweredObj.GetComponent<BaseLaserInstrument>().PowerOff();
+        if (connect2Build)
+            poweredObj.GetComponent<BaseLaserInstrument>().PowerOff();
+        else
+        {
+            powerOffEvent?.Invoke();
+        }
     }
 
 

@@ -7,6 +7,8 @@ public class GameScene : MonoBehaviour
     public Texture2D mouseTxt;
     float dt;
     private static  bool isLoaded = false;
+
+    public static GameData gameData;
     private void Awake()
     {
         if (isLoaded)
@@ -16,6 +18,7 @@ public class GameScene : MonoBehaviour
         else
         {
             isLoaded = true;
+            gameData = SaveSystem.LoadGame();
             DontDestroyOnLoad(gameObject);
             GameApp.Instance.Init();
         }

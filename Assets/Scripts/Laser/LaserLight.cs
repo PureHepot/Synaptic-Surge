@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Light : BaseLaserInstrument
+public class LaserLight : BaseLaserInstrument
 {
     private Transform _light;
 
