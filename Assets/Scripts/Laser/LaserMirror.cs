@@ -14,6 +14,7 @@ public class LaserMirror : BaseLaserInstrument
     {
         isLaserStart = false;
         isLaserEnd = false;
+        isRotatable = false;
     }
 
     protected override void OnStart()

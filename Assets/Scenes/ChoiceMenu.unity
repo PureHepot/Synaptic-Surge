@@ -242,7 +242,7 @@ MonoBehaviour:
   laserColor: 0
   isPassed: 1
   isHited: 0
-  level: 1
+  level: 2
   endPosition: {x: -2, y: -1.5, z: 0}
   speed: 5
 --- !u!61 &156707813
@@ -543,7 +543,7 @@ MonoBehaviour:
   laserColor: 0
   isPassed: 1
   isHited: 0
-  level: 1
+  level: 3
   endPosition: {x: 0, y: 1.5, z: 0}
   speed: 5
 --- !u!61 &308691912
@@ -693,7 +693,7 @@ MonoBehaviour:
   laserColor: 0
   isPassed: 1
   isHited: 0
-  level: 1
+  level: 4
   endPosition: {x: 2, y: -1.5, z: 0}
   speed: 5
 --- !u!61 &391025743
@@ -1521,7 +1521,7 @@ MonoBehaviour:
   laserColor: 0
   isPassed: 1
   isHited: 0
-  level: 1
+  level: 6
   endPosition: {x: 6, y: -1.5, z: 0}
   speed: 5
 --- !u!61 &1206622267
@@ -1793,7 +1793,7 @@ MonoBehaviour:
   laserColor: 0
   isPassed: 1
   isHited: 0
-  level: 1
+  level: 5
   endPosition: {x: 4, y: 1.5, z: 0}
   speed: 5
 --- !u!61 &1476759114
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   laserColor: 0
   isPassed: 1
   isHited: 0
-  level: 1
+  level: 7
   endPosition: {x: 8, y: 1.5, z: 0}
   speed: 5
 --- !u!61 &1760405532
@@ -2233,7 +2233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3711365382733696720, guid: e51dd50c829a140439836f27bcac03cd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

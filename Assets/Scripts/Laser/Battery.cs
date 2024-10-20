@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Battery : BaseLaserInstrument
 {
+    private SpriteRenderer signRenderer;
     public GameObject poweredObj;
     public LaserColor powerColor;
 
@@ -80,11 +81,17 @@ public class Battery : BaseLaserInstrument
     {
         isLaserStart = false;
         isLaserEnd = true;
+        isMovable = false;
+        isRotatable = false;
+
+        signRenderer = transform.Find("Sign").GetComponent<SpriteRenderer>();
     }
 
     protected override void OnStart()
     {
         base.OnStart();
+
+        signRenderer.color = LaserControl.laserColors[powerColor];
     }
 
     private float counter;

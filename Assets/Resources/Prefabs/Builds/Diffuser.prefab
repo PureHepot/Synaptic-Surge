@@ -61,7 +61,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.84, y: -9, z: 0}
-  m_LocalScale: {x: 1.7668, y: 1.7668, z: 1.7668}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 215551415862659834}
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+  isMovable: 0
 --- !u!50 &1305702307839995097
 Rigidbody2D:
   serializedVersion: 4

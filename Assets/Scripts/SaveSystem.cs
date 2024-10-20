@@ -8,7 +8,7 @@ using UnityEngine;
 public class GameData
 {
     public bool isFirstPlay;
-    public int playerLevel;
+    public int level;
 }
 
 // 存档系统类
@@ -55,7 +55,7 @@ public class SaveSystem
         else
         {
             Debug.LogWarning("存档文件不存在，无法读取进度");
-            return null;
+            return new GameData();
         }
     }
 

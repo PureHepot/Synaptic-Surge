@@ -8,7 +8,7 @@ public class GameScene : MonoBehaviour
     float dt;
     private static  bool isLoaded = false;
 
-    public static GameData gameData;
+    public static GameData gameData = new GameData();
     private void Awake()
     {
         if (isLoaded)
@@ -19,6 +19,7 @@ public class GameScene : MonoBehaviour
         {
             isLoaded = true;
             gameData = SaveSystem.LoadGame();
+            gameData.level = 5;
             DontDestroyOnLoad(gameObject);
             GameApp.Instance.Init();
         }
