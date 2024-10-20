@@ -19,7 +19,7 @@ public class BaseLaserInstrument : MonoBehaviour
     protected bool isPowered = false;
     protected bool isRotatable = false;
     private bool isMouseOver = false;
-    protected bool isMovable = false;
+    public bool isMovable = false;
     public bool IsPowered
     {
         get { return isPowered; }

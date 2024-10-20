@@ -37,6 +37,9 @@ public class LevelGate : BaseLaserInstrument
         LevelGateManager.instance.Register(this, isHited);
 
         startPosition = transform.position;
+
+        if (GameScene.gameData.level > level)
+            isOpen = true;
     }
 
     private void OnMouseDown()
