@@ -186,7 +186,7 @@ MonoBehaviour:
   color: 2
   colorIntensity: 1.5
   maxLength: 100
-  thickness: 5
+  thickness: 3
   noiseScale: 3
   startVFX: {fileID: 5469535125080819948}
   endVFX: {fileID: 902408614993664003}
@@ -243,16 +243,36 @@ PrefabInstance:
       value: StartVFX
       objectReference: {fileID: 0}
     - target: {fileID: 2008324885828360328, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008324885828360328, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008324885828360328, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008324885828360328, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2008324885828360328, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.8
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008324885828360328, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008324885828360328, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2008324885828360328, guid: dd3a7a6c20a87634184b01f905ac0163, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -322,20 +342,36 @@ PrefabInstance:
       value: EndVFX
       objectReference: {fileID: 0}
     - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.6
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9154003759287280721, guid: 5ff090594dfca7545b11b09356c466fa, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
