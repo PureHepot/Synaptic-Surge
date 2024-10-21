@@ -9,7 +9,7 @@ using UnityEngine;
 /// <summary>
 /// 控制器管理器
 /// </summary>
-public class ControllerManager : MonoBehaviour
+public class ControllerManager
 {
     private Dictionary<int, BaseController> _modules;//存储控制器的字典
 

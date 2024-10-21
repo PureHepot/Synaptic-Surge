@@ -212,7 +212,7 @@ public class LaserControl : MonoBehaviour
 
     public void RoadDFS(Vector2 direction, RaycastHit2D hit)
     {
-        BaseLaserInstrument laserInstrument = new BaseLaserInstrument();
+        BaseLaserInstrument laserInstrument = null;
         if (hit.transform != null)
         {
             laserInstrument = hit.transform.GetComponent<BaseLaserInstrument>();

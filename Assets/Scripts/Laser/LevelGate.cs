@@ -20,7 +20,7 @@ public class LevelGate : BaseLaserInstrument
         laser.IsStop = true;
 
         isHited = true;
-        LevelGateManager.instance.Register(this, isHited);
+        LevelGateManager.instance.ChangeState(this, isHited);
     }
 
     protected override void OnAwake()
@@ -63,7 +63,7 @@ public class LevelGate : BaseLaserInstrument
             if (hitLaser != null && LaserManager.Instance.Check(hitLaser, this) == false)
             {
                 isHited = false;
-                LevelGateManager.instance.Register(this, isHited);
+                LevelGateManager.instance.ChangeState(this, isHited);
             }
         }
 
