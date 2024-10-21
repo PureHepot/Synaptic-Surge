@@ -50,6 +50,6 @@ public class LevelGateManager : MonoBehaviour
     public void LoadHitedScene()
     {
         int level = GetLevel();
-        SceneManager.LoadScene($"Level{level}");
+        LevelLoader.Instance.LoadNextLevel($"Level{level}");
     }
 }

@@ -6,6 +6,8 @@ public class LaserLight : BaseLaserInstrument
 {
     private Transform _light;
 
+    public bool isPowerOn{ get; private set; }
+
     public override void OnLaserHit(LaserControl laser)
     {
     }
@@ -13,11 +15,13 @@ public class LaserLight : BaseLaserInstrument
     public override void PowerOff()
     {
         _light.GetComponent<SpriteRenderer>().color = Color.black;
+        isPowerOn = false;
     }
 
     public override void PowerOn()
     {
         _light.GetComponent<SpriteRenderer>().color = Color.white;
+        isPowerOn = true;
     }
 
     public override void ResetLaser()

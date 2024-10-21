@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5175392081779829396}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+  isMovable: 0
 --- !u!1 &4620180038045317424
 GameObject:
   m_ObjectHideFlags: 0

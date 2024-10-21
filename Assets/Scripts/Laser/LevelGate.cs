@@ -13,7 +13,8 @@ public class LevelGate : BaseLaserInstrument
     private Vector3 startPosition;
     public Vector3 endPosition;
 
-    private Vector3 velocity;
+
+    private SpriteRenderer point;
 
     public override void OnLaserHit(LaserControl laser)
     {
@@ -29,6 +30,8 @@ public class LevelGate : BaseLaserInstrument
         isLaserEnd = true;
         isMovable = false;
         isRotatable = false;
+
+        point = transform.Find("Point").GetComponent<SpriteRenderer>();
     }
 
     
@@ -40,6 +43,8 @@ public class LevelGate : BaseLaserInstrument
 
         if (GameScene.gameData.level > level)
             isOpen = true;
+        if (isOpen) point.color = Color.green;
+        else point.color = Color.red;
     }
 
     private void OnMouseDown()
@@ -47,6 +52,8 @@ public class LevelGate : BaseLaserInstrument
         if (isPassed)
         {
             isOpen = !isOpen;
+            if (isOpen) point.color = Color.green;
+            else point.color = Color.red;
         }
     }
 
@@ -69,11 +76,11 @@ public class LevelGate : BaseLaserInstrument
 
         if(isOpen)
         {
-            transform.position = Vector3.Lerp(transform.position, endPosition, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, endPosition, speed * Time.deltaTime);
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, startPosition, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, startPosition, speed * Time.deltaTime);
         }
     }
 }
