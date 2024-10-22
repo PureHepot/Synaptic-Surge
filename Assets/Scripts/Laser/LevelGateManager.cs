@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelGateManager : MonoBehaviour
 {
@@ -26,12 +27,29 @@ public class LevelGateManager : MonoBehaviour
 
     public int GetLevel()
     {
-        LevelGate gate = new LevelGate();
+        LevelGate gate = null;
+        int num = 0;
         foreach (var item in levelGateList)
         {
             if (levelGateMap[item])
                 gate = item;
         }
-        return gate.level;
+        if(gate != null)
+            return gate.level;
+        else return num;
+    }
+
+    public void ChangeState(LevelGate gate, bool state)
+    {
+        if (levelGateMap.ContainsKey(gate))
+        {
+            levelGateMap[gate] = state;
+        }
+    }
+
+    public void LoadHitedScene()
+    {
+        int level = GetLevel();
+        LevelLoader.Instance.LoadNextLevel($"Level{level}");
     }
 }

@@ -1526,9 +1526,9 @@ CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabAsset: {fileID: 0
   m_GameObject: {fileID: 1892080317}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 
 --- !u!1001 &1917965339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2320,7 +2320,7 @@ PrefabInstance:
   m_Modification:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
-    m_Modifications:
+    m_Modifications
     - target: {fileID: 610884145386967327, guid: db2891d8b0e9b7e4da24ca6870e5cc63, type: 3}
       propertyPath: m_SizeDelta.x
       value: -1280
@@ -2462,11 +2462,12 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 610884145386967327, guid: db2891d8b0e9b7e4da24ca6870e5cc63, type: 3}
   m_PrefabInstance: {fileID: 5385035711311584541}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabAsset: {fileID: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 3937388892973620404}
   - {fileID: 2021540040}
   - {fileID: 1917965339}
   - {fileID: 2038694543}

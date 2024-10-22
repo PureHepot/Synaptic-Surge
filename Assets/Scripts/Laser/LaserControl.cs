@@ -173,6 +173,7 @@ public class LaserControl : MonoBehaviour
             hit.transform.GetComponent<BaseLaserInstrument>().OnLaserHit(this);
             laserEndRotation = Vector2.Angle(direction, hit.normal);//获取发射方向与法线的角度
 
+
             //获取撞击点后进行路线设置
             if(!isStop)
             {
@@ -212,7 +213,7 @@ public class LaserControl : MonoBehaviour
 
     public void RoadDFS(Vector2 direction, RaycastHit2D hit)
     {
-        BaseLaserInstrument laserInstrument = new BaseLaserInstrument();
+        BaseLaserInstrument laserInstrument = null;
         if (hit.transform != null)
         {
             laserInstrument = hit.transform.GetComponent<BaseLaserInstrument>();

@@ -17,7 +17,7 @@ public class ViewInfo
 /// <summary>
 /// 视图管理器
 /// </summary>
-public class ViewManager : MonoBehaviour
+public class ViewManager
 {
     public Transform canvasTF;//画布组件
     Dictionary<int, IBaseView> _opens;//开启中的视图
