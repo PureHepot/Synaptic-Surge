@@ -197,7 +197,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.025235653, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -240,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+  isMovable: 0
   isPassed: 1
   isHited: 0
   level: 2
@@ -390,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+  isMovable: 0
   isPassed: 1
   isHited: 0
   level: 1
@@ -541,6 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+  isMovable: 0
   isPassed: 1
   isHited: 0
   level: 3
@@ -691,6 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+  isMovable: 0
   isPassed: 1
   isHited: 0
   level: 4
@@ -1519,6 +1523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+  isMovable: 0
   isPassed: 1
   isHited: 0
   level: 6
@@ -1791,6 +1796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+  isMovable: 0
   isPassed: 1
   isHited: 0
   level: 5
@@ -2062,6 +2068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLaser: {fileID: 0}
   laserColor: 0
+  isMovable: 0
   isPassed: 1
   isHited: 0
   level: 7
@@ -2233,7 +2240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3711365382733696720, guid: e51dd50c829a140439836f27bcac03cd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
