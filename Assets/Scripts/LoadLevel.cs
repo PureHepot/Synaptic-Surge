@@ -8,7 +8,6 @@ public class LoadLevel : MonoBehaviour
     // 通过编辑器选择场景
     [SerializeField] private SceneAsset sceneToLoad;
 
-    
     // 加载场景
     public void Loadlevel()
     {
