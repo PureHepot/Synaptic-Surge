@@ -1,17 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadingController : BaseController
 {
+    AsyncOperation asyncOp;
+
     public LoadingController() : base()
     {
-        GameApp.ViewManager.Register(ViewType.LoadingView, new ViewInfo(){
-            PrefabName = "LoadingView",
-            controller = this,
-            parentTF = GameApp.ViewManager.canvasTF
-        });
-
         InitModuleEvent();
     }
 
@@ -25,5 +23,18 @@ public class LoadingController : BaseController
         LoadingModel loadingModel = args[0] as LoadingModel;
 
         SetModel(loadingModel);
+
+        asyncOp = SceneManager.LoadSceneAsync(loadingModel.SceneName);
+
+        asyncOp.completed += onLoadedEndCallBack;
+    }
+
+    private void onLoadedEndCallBack(AsyncOperation asyncOp)
+    {
+        asyncOp.completed -= onLoadedEndCallBack;
+
+        GetModel<LoadingModel>().callback?.Invoke(); //Ö´ÐÐ»Øµ÷
+
+        
     }
 }

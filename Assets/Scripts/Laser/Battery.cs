@@ -38,7 +38,8 @@ public class Battery : BaseLaserInstrument
         if(laser.Color == powerColor && addTime > requireTime)
         {
             addTime = 0;
-            PowerOn();
+            if(!isPowered)
+                PowerOn();
         }
             
     }
@@ -62,7 +63,7 @@ public class Battery : BaseLaserInstrument
             poweredObj.GetComponent<BaseLaserInstrument>().PowerOff();
         else
         {
-            powerOffEvent?.Invoke();
+             powerOffEvent?.Invoke();
         }
     }
 

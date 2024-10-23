@@ -20,7 +20,13 @@ public class StartView : BaseView
     //开始游戏
     private void onStartGameBtn()
     {
+        //关闭开始界面
+        GameApp.ViewManager.Close(ViewId);
+
         LevelLoader.Instance.LoadNextLevel("ChoiceMenu");
+        //LoadingModel loadingModel = new LoadingModel();
+        //loadingModel.SceneName = "ChoiceMenu";
+        //Controller.ApplyControllerFunc(ControllerType.Loading,Defines.LoadingScene,loadingModel);
     }
     //打开设置
     private void onContinueBtn()

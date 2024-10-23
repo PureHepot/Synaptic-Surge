@@ -18,13 +18,20 @@ public class GameUIController : BaseController
             parentTF = GameApp.ViewManager.canvasTF
             
         });
-        //GameApp.ViewManager.Register(ViewType.MessageView, new ViewInfo()
-        //{
-        //    PrefabName = "MessageView",
-        //    controller = this,
-        //    Sorting_Order = 999,
-        //    parentTF = GameApp.ViewManager.canvasTF
-        //});
+        GameApp.ViewManager.Register(ViewType.PauseView, new ViewInfo()
+        {
+            PrefabName = "PauseView",
+            controller = this,
+            Sorting_Order = 999,
+            parentTF = GameApp.ViewManager.canvasTF
+        });
+        GameApp.ViewManager.Register(ViewType.PassView, new ViewInfo()
+        {
+            PrefabName = "PassView",
+            controller = this,
+            Sorting_Order = 10,
+            parentTF = GameApp.ViewManager.canvasTF
+        });
         InitModuleEvent();//初始化模板事件
         InitGlobalEvent();//初始化全局事件
 
@@ -33,6 +40,7 @@ public class GameUIController : BaseController
     public override void InitModuleEvent()
     {
         RegisterFunc(Defines.OpenStartView, openStartView);//注册打开开始面板
+        RegisterFunc(Defines.OpenPassView, openPassView);
         //RegisterFunc(Defines.OpenSetView, openSetView);//注册设置面板
         //RegisterFunc(Defines.OpenMessageView, openMessageView);//注册提示面板
     }
@@ -54,5 +62,10 @@ public class GameUIController : BaseController
     private void openMessageView(System.Object[] arg)
     {
         GameApp.ViewManager.Open(ViewType.MessageView, arg);
+    }
+
+    private void openPassView(System.Object[] arg)
+    {
+        GameApp.ViewManager.Open(ViewType.PassView, arg);
     }
 }

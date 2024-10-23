@@ -19,7 +19,7 @@ public class GameScene : MonoBehaviour
         {
             isLoaded = true;
             gameData = SaveSystem.LoadGame();
-            gameData.level = 4;
+            gameData.level = 1;
             DontDestroyOnLoad(gameObject);
             GameApp.Instance.Init();
         }
@@ -43,6 +43,7 @@ public class GameScene : MonoBehaviour
     {
         GameApp.ControllerManager.Register(ControllerType.GameUI, new GameUIController());
         GameApp.ControllerManager.Register(ControllerType.Game, new GameController());
+        GameApp.ControllerManager.Register(ControllerType.Loading, new LoadingController());
     }
 
     /// <summary>

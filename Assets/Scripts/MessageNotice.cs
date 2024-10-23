@@ -21,6 +21,7 @@ public class MessageNotice : MonoBehaviour
     private void Awake()
     {
         txt = GetComponentInChildren<Text>();
+        transform.parent.GetComponent<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         
     }
 

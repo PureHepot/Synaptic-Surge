@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,10 @@ public class GameManager : MonoBehaviour
 {
     private List<LaserLight> lights;
 
+    private bool isLevel;
+
+    public static bool isPause;
+    public static bool isPass;
 
     private void OnDestroy()
     {
@@ -31,10 +36,14 @@ public class GameManager : MonoBehaviour
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Light");
         lights.Clear();
+        isPass = false;
         foreach (GameObject obj in objs)
         {
             lights.Add(obj.GetComponent<LaserLight>());
         }
+        string letters = Regex.Match(SceneManager.GetActiveScene().name, @"[a-zA-Z]+").Value;
+        if(letters == "Level") isLevel = true;
+        else isLevel = false;
     }
 
     private void Update()
@@ -42,19 +51,27 @@ public class GameManager : MonoBehaviour
         if (isAllLightPowerOn())
         {
             //Í¨¹Ø
+            GameApp.ViewManager.Open(ViewType.PassView);
+        }
+        if(isLevel && Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(!isPause) GameApp.ViewManager.Open(ViewType.PauseView);
+            else GameApp.ViewManager.Close(ViewType.PauseView);
+            isPause = !isPause;
         }
     }
 
     private bool isAllLightPowerOn()
     {
-        if(lights.Count <= 0) { return false; }
+        if(lights.Count <= 0) return false; 
+        if (isPass) return false;
 
         foreach (LaserLight obj in lights)
         {
             if (obj.isPowerOn == false)
                 return false;
         }
-
+        isPass = true;
         return true;
     }
 
