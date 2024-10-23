@@ -65,8 +65,8 @@ public class LaserControl : MonoBehaviour
     private float beamColorEnhance = 1f;
 
     [SerializeField] private float maxLength = 100;
-    [SerializeField] private float thickness = 5;
-    [SerializeField] private float noiseScale = 3;
+    [SerializeField] private float thickness = 30;
+    [SerializeField] private float smoothness = 10;
     [SerializeField] private GameObject startVFX;
     [SerializeField] private GameObject endVFX;
 
@@ -98,7 +98,7 @@ public class LaserControl : MonoBehaviour
 
         lineRenderer.material.color = laserColors[color] * colorIntensity;
         lineRenderer.material.SetFloat("_LaserThickness", thickness);
-        lineRenderer.material.SetFloat("_LaserScale", noiseScale);
+        lineRenderer.material.SetFloat("_LaserEdgeSmoothness", smoothness);
 
         ParticleSystem[] particles = GetComponentsInChildren<ParticleSystem>();
         foreach(ParticleSystem particle in particles)

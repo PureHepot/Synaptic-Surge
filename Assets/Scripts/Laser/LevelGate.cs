@@ -42,7 +42,10 @@ public class LevelGate : BaseLaserInstrument
         startPosition = transform.position;
 
         if (GameScene.gameData.level > level)
+        {
             isOpen = true;
+            isPassed = true;
+        }
         if (isOpen) point.color = Color.green;
         else point.color = Color.red;
     }

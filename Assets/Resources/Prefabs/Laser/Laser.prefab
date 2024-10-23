@@ -85,7 +85,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.10247803
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -186,8 +186,8 @@ MonoBehaviour:
   color: 2
   colorIntensity: 1.5
   maxLength: 100
-  thickness: 3
-  noiseScale: 3
+  thickness: 10
+  smoothness: 8
   startVFX: {fileID: 5469535125080819948}
   endVFX: {fileID: 902408614993664003}
 --- !u!1001 &5512803034537360869

@@ -32,6 +32,7 @@ public class BaseLaserInstrument : MonoBehaviour
 
     private void Awake()
     {
+        rotateAngle = transform.rotation.eulerAngles.z;
         OnAwake();
     }
 
