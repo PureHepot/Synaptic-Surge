@@ -26,6 +26,7 @@ public class LaserDiffuser : BaseLaserInstrument
         for(int i = 0;i < 3;i++)
         {
             LaserInit(gunPoses[i], i);
+            lasers[i].buildType = BuildType.Diffuser;
             LaserManager.Instance.Register(lasers[i], new LaserInfo()
             {
                 color = laserColor,
@@ -55,7 +56,9 @@ public class LaserDiffuser : BaseLaserInstrument
 
     public override void OnLaserHit(LaserControl laser)
     {
-        laser.IsStop = true;
+        base.OnLaserHit(laser);
+        if (isHitedbyLaser && laser.buildType< GetHighPriorityLaser()) return;
+        isHitedbyLaser = true;
         for (int i = 0; i < 3; i++)
         {
             LaserManager.Instance.ChangeLaunchState(lasers[i], true);
@@ -110,6 +113,9 @@ public class LaserDiffuser : BaseLaserInstrument
 
     public override void ResetLaser()
     {
+        isHitedbyLaser = false;
+
+        HitLasers.Clear();
         for (int i = 0; i < 3; i++)
         {
             LaserManager.Instance.ChangeHitState(lasers[i], false);

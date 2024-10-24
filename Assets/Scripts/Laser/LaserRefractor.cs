@@ -19,6 +19,7 @@ public class LaserRefractor : BaseLaserInstrument
     protected override void OnStart()
     {
         LaserInit(gunPos);
+        laser.buildType = BuildType.Refractor;
         LaserManager.Instance.Register(laser, new LaserInfo()
         { 
             color = laserColor,
@@ -51,8 +52,9 @@ public class LaserRefractor : BaseLaserInstrument
 
     public override void OnLaserHit(LaserControl lazer)
     {
-        lazer.IsStop = true;
-
+        base.OnLaserHit(lazer);
+        if (isHitedbyLaser && lazer.buildType < GetHighPriorityLaser()) return;
+        isHitedbyLaser = true;
         LaserManager.Instance.ChangeLaunchState(laser, true);
         laser.gameObject.SetActive(true);
         laser.Color = lazer.Color;

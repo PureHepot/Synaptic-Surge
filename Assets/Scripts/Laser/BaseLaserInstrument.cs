@@ -5,15 +5,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class BaseLaserInstrument : MonoBehaviour
 {
     //激光特性
     protected LaserControl laser;
     public LaserControl hitLaser;
+    protected List<LaserControl> HitLasers = new List<LaserControl>();
     public LaserColor laserColor = LaserColor.White;
 
 
     //仪器特性
+    protected bool isHitedbyLaser = false;
     protected bool isLaserStart = false;
     protected bool isLaserEnd = false;
     protected bool isPowered = false;
@@ -62,7 +65,6 @@ public class BaseLaserInstrument : MonoBehaviour
         {
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 moveVec = (cursorPos - (Vector2)transform.position) * 10;
-            if (moveVec.magnitude < 2f) moveVec = moveVec.normalized * 2;
             GetComponent<Rigidbody2D>().velocity = moveVec;
         }
     }
@@ -109,7 +111,9 @@ public class BaseLaserInstrument : MonoBehaviour
 
     public virtual void OnLaserHit(LaserControl laser)
     {
-
+        laser.IsStop = isLaserEnd;
+        if(!HitLasers.Contains(laser))
+            HitLasers.Add(laser);
     }
 
     public bool IsLaserStop()
@@ -127,6 +131,9 @@ public class BaseLaserInstrument : MonoBehaviour
 
     public virtual void ResetLaser()
     {
+        isHitedbyLaser = false;
+
+        HitLasers.Clear();
         LaserManager.Instance.ChangeHitState(laser, false);
         LaserManager.Instance.ChangeLaunchState(laser, false);
         laser.gameObject.SetActive(false);
@@ -135,5 +142,16 @@ public class BaseLaserInstrument : MonoBehaviour
     public virtual void ResetPowerSys()
     {
 
+    }
+
+    protected BuildType GetHighPriorityLaser()
+    {
+        LaserControl laser = HitLasers[0];
+        foreach(LaserControl lazer in HitLasers)
+        {
+            if(lazer.buildType>laser.buildType)
+                laser = lazer;
+        }
+        return laser.buildType;
     }
 }

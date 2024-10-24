@@ -27,7 +27,7 @@ public class PassView : BaseView
 
         int a = int.Parse(Regex.Match(SceneManager.GetActiveScene().name, @"\d+").Value);
 
-        GameScene.gameData.level = a > GameScene.gameData.level ? a + 1 : GameScene.gameData.level;
+        GameScene.gameData.level = a >= GameScene.gameData.level ? a + 1 : GameScene.gameData.level;
 
         SaveSystem.SaveGame(GameScene.gameData);
     }

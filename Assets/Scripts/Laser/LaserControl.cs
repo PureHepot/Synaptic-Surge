@@ -15,6 +15,13 @@ public enum LaserColor
     Violet
 }
 
+public enum BuildType
+{
+    Refractor,
+    Diffuser,
+    Tower
+}
+
 
 public class HitInfo
 {
@@ -37,6 +44,9 @@ public class LaserControl : MonoBehaviour
         {LaserColor.Cyan, new Color(0,1,1) },
         {LaserColor.Violet, new Color(1,0,1) }
     };
+
+    //激光的建筑
+    public BuildType buildType;
 
     //激光发射方向
     private Vector2 laserDirection;

@@ -22,6 +22,7 @@ public class LaserTower : BaseLaserInstrument
         //Éú³É¼¤¹â
         LaserInit(gunPos);
         laser.gameObject.SetActive(true);
+        laser.buildType = BuildType.Tower;
         LaserManager.Instance.Register(laser, new LaserInfo() {
             color = laserColor,
             isLaunch = true,
