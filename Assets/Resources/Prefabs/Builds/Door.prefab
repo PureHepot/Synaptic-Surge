@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7116090183922874897}
   - component: {fileID: 7309764830172030909}
   - component: {fileID: 4023537230061928530}
+  - component: {fileID: 640088001006322726}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1767068857268833692}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.83, y: -9.64, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -130,6 +131,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &640088001006322726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767068857268833692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa6d4c8927b782408f229f89fc2821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitLaser: {fileID: 0}
+  laserColor: 0
+  isMovable: 0
 --- !u!1 &7205024847833039329
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +157,7 @@ GameObject:
   - component: {fileID: 6372491859812801754}
   - component: {fileID: 7989159184503621952}
   - component: {fileID: 807608963371559586}
+  - component: {fileID: 8304415157782617054}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -157,7 +174,7 @@ Transform:
   m_GameObject: {fileID: 7205024847833039329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.83, y: -9.64, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -260,6 +277,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8304415157782617054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7205024847833039329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa6d4c8927b782408f229f89fc2821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitLaser: {fileID: 0}
+  laserColor: 0
+  isMovable: 0
 --- !u!1 &8764023743974771330
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +341,7 @@ MonoBehaviour:
   hitLaser: {fileID: 0}
   laserColor: 0
   isMovable: 0
-  poses:
-  - {x: 9.33, y: -9.64, z: 0}
-  - {x: 11.33, y: -9.64, z: 0}
+  distance: 0.5
   speed: 1
+  isHorizon: 0
+  doorColor: {r: 0, g: 0, b: 0, a: 0}

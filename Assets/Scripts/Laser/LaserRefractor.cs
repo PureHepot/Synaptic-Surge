@@ -33,9 +33,10 @@ public class LaserRefractor : BaseLaserInstrument
     {
         base.OnFrame();
         counter += Time.deltaTime;
-        if (counter > 0.1f)
+        if (counter > 0.05f)
         {
             counter = 0f;
+            CheckHitLasers();
             if (hitLaser != null && LaserManager.Instance.Check(hitLaser, this) == false)
             {
                 ResetLaser();

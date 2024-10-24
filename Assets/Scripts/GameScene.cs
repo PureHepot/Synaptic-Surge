@@ -19,7 +19,7 @@ public class GameScene : MonoBehaviour
         {
             isLoaded = true;
             gameData = SaveSystem.LoadGame();
-            gameData.level = 7;
+            gameData.level = 8;
             DontDestroyOnLoad(gameObject);
             GameApp.Instance.Init();
         }

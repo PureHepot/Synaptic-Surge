@@ -7,12 +7,19 @@ public class Door : BaseLaserInstrument
     private Transform leftDoor;
     private Transform rightDoor;
 
-    public List<Vector3> poses;
+    public float distance;
     private List<Vector3> originPos = new List<Vector3>();
 
     public float speed;
 
+    public bool isHorizon = true;
+
     private bool isOpen;
+
+    private Vector3 newPositionL;
+    private Vector3 newPositionR;
+
+    public Color doorColor;
 
 
     public override void OnLaserHit(LaserControl laser)
@@ -37,16 +44,22 @@ public class Door : BaseLaserInstrument
         leftDoor = transform.Find("Left").transform;
         rightDoor = transform.Find("Right").transform;
 
+        leftDoor.GetComponent<SpriteRenderer>().color = doorColor;
+        rightDoor.GetComponent<SpriteRenderer>().color = doorColor;
+
         originPos.Add(leftDoor.position);
         originPos.Add(rightDoor.position);
+
+        newPositionL = isHorizon ? leftDoor.position + Vector3.left*distance : leftDoor.position + Vector3.up*distance;
+        newPositionR = isHorizon ? rightDoor.position + Vector3.right*distance : rightDoor.position + Vector3.down*distance;
     }
 
     protected override void OnFrame()
     {
         if (isOpen)
         {
-            leftDoor.position = Vector3.MoveTowards(leftDoor.position, poses[0], speed * Time.deltaTime);
-            rightDoor.position = Vector3.MoveTowards(rightDoor.position, poses[1], speed * Time.deltaTime);
+            leftDoor.position = Vector3.MoveTowards(leftDoor.position, newPositionL, speed * Time.deltaTime);
+            rightDoor.position = Vector3.MoveTowards(rightDoor.position, newPositionR, speed * Time.deltaTime);
         }
         else
         {

@@ -133,7 +133,6 @@ public class BaseLaserInstrument : MonoBehaviour
     {
         isHitedbyLaser = false;
 
-        HitLasers.Clear();
         LaserManager.Instance.ChangeHitState(laser, false);
         LaserManager.Instance.ChangeLaunchState(laser, false);
         laser.gameObject.SetActive(false);
@@ -152,6 +151,19 @@ public class BaseLaserInstrument : MonoBehaviour
             if(lazer.buildType>laser.buildType)
                 laser = lazer;
         }
+
         return laser.buildType;
+    }
+
+    protected void CheckHitLasers()
+    {
+        if (HitLasers.Count <= 0) return;
+        for(int i = 0; i < HitLasers.Count; i++) 
+        {
+            if (LaserManager.Instance.Check(HitLasers[i], this) == false)
+            {
+                HitLasers.Remove(HitLasers[i]);
+            }
+        }
     }
 }

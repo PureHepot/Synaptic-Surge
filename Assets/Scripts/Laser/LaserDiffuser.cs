@@ -43,9 +43,10 @@ public class LaserDiffuser : BaseLaserInstrument
     {
         base.OnFrame();
         counter += Time.deltaTime;
-        if (counter > 0.1f)
+        if (counter > 0.05f)
         {
             counter = 0f;
+            CheckHitLasers();
             if (hitLaser != null && LaserManager.Instance.Check(hitLaser, this) == false)
             {
                 ResetLaser();
@@ -57,7 +58,7 @@ public class LaserDiffuser : BaseLaserInstrument
     public override void OnLaserHit(LaserControl laser)
     {
         base.OnLaserHit(laser);
-        if (isHitedbyLaser && laser.buildType< GetHighPriorityLaser()) return;
+        if (isHitedbyLaser && laser.buildType < GetHighPriorityLaser()) return;
         isHitedbyLaser = true;
         for (int i = 0; i < 3; i++)
         {
