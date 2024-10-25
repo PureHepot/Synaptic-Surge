@@ -13,31 +13,29 @@ public class Battery : BaseLaserInstrument
     public UnityEvent powerOnEvent;
     public UnityEvent powerOffEvent;
 
-    private bool isOnceShot = true;
-
+    private bool isPlayingEffect = false;
+    private bool CanCharge = false;
 
     //需要的照射时间
-    public float requireTime = 1f;
-    private float lastTime;
-    private float addTime;
+    public float batteryEnergy = 4f;
+    public float gatherSpd = 1;
+    private float currentEnergy;
 
     public override void OnLaserHit(LaserControl laser)
     {
-        if (isOnceShot)
+        if(laser.Color == powerColor)
+            CanCharge = true;
+
+        if(!isPlayingEffect && CanCharge)
         {
-            isOnceShot = false;
-            lastTime = Time.time;
-        }
-        else
-        {
-            addTime += Time.time - lastTime;
-            lastTime = Time.time;
+            isPlayingEffect = true;
+            GameApp.SoundManager.PlayBGM(Defines.Charging, false);
         }
 
+
         laser.IsStop = true;
-        if(laser.Color == powerColor && addTime > requireTime)
+        if(CanCharge && currentEnergy >= batteryEnergy)
         {
-            addTime = 0;
             if(!isPowered)
                 PowerOn();
         }
@@ -56,9 +54,7 @@ public class Battery : BaseLaserInstrument
     }
     public override void PowerOff()
     {
-        addTime = 0;
         isPowered = false;
-        isOnceShot = true;
         if (connect2Build)
             poweredObj.GetComponent<BaseLaserInstrument>().PowerOff();
         else
@@ -95,22 +91,37 @@ public class Battery : BaseLaserInstrument
         signRenderer.color = LaserControl.laserColors[powerColor];
     }
 
-    private float counter;
     private void Update()
     {
-        counter += Time.deltaTime;
-        if (counter > 0.1f)
+        if(CanCharge)
         {
-            counter = 0f;
-            if (hitLaser != null && LaserManager.Instance.Check(hitLaser, this) == false)
-            {
-                ResetPowerSys();
-            }
+            currentEnergy = Mathf.Clamp(currentEnergy + gatherSpd * Time.deltaTime, 0, batteryEnergy);
         }
+        else
+        {
+
+            currentEnergy = Mathf.Clamp(currentEnergy - 2 * gatherSpd * Time.deltaTime, 0, batteryEnergy);
+        }
+
+
+        if (hitLaser != null && LaserManager.Instance.Check(hitLaser, this) == false)
+        {
+            ResetPowerSys();
+        }
+
+        
+
     }
 
     public override void ResetPowerSys()
     {
+        if(isPlayingEffect)
+        {
+            isPlayingEffect = false;
+            GameApp.SoundManager.StopBgm(Defines.Charging);
+        }
+
+        CanCharge = false;
         PowerOff();
     }
 }

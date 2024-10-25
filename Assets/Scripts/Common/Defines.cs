@@ -14,4 +14,11 @@ public static class Defines
     public static readonly string OpenMessageView = "OpenMessageView";//打开提示面板
     public static readonly string LoadingScene = "LoadingScene";//加载场景
     public static readonly string OpenPassView = "OpenPassView";
+
+    //音频相关的字符串
+    public static readonly string UIButton = "EnterEffect";
+    public static readonly string PowerOn = "PowerOn";
+    public static readonly string LbBackground = "LbBackground";
+    public static readonly string Light = "Light2";
+    public static readonly string Charging = "Charging";
 }

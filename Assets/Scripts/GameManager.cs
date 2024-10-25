@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         if (isAllLightPowerOn())
         {
             //Í¨¹Ø
-            GameApp.ViewManager.Open(ViewType.PassView);
+            StartCoroutine(PasstheLevel());
         }
         if(isLevel && Input.GetKeyDown(KeyCode.Escape))
         {
@@ -73,6 +73,13 @@ public class GameManager : MonoBehaviour
         }
         isPass = true;
         return true;
+    }
+
+
+    IEnumerator PasstheLevel()
+    {
+        yield return new WaitForSeconds(2);
+        GameApp.ViewManager.Open(ViewType.PassView);
     }
 
 }

@@ -20,6 +20,8 @@ public class StartView : BaseView
     //开始游戏
     private void onStartGameBtn()
     {
+        //播放
+        GameApp.SoundManager.PlayBGM(Defines.UIButton,false);
         //关闭开始界面
         GameApp.ViewManager.Close(ViewId);
 
@@ -31,11 +33,13 @@ public class StartView : BaseView
     //打开设置
     private void onContinueBtn()
     {
-        
+        GameApp.SoundManager.PlayBGM(Defines.UIButton, false);
     }
     //退出游戏
     private void onQuitGameBtn()
     {
+        GameApp.SoundManager.PlayBGM(Defines.UIButton, false);
+
         Application.Quit();
         //Controller.ApplyControllerFunc(ControllerType.GameUI, Defines.OpenMessageView, new MessageInfo()
         //{

@@ -156,7 +156,8 @@ MonoBehaviour:
   powerOffEvent:
     m_PersistentCalls:
       m_Calls: []
-  requireTime: 1
+  batteryEnergy: 4
+  gatherSpd: 1
 --- !u!1 &6554738439447901731
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class SoundManager
 {
-    private AudioSource bgmSource;//播放bgm的音频组件
+    private List<AudioSource> bgmSources;//播放bgm的音频组件
 
     private Dictionary<string, AudioClip> clips;//音频缓存字典
 
@@ -24,11 +24,17 @@ public class SoundManager
             isStop = value;
             if(isStop == true)
             {
-                bgmSource.Pause();
+                foreach (AudioSource source in bgmSources)
+                {
+                    source.Pause();
+                }
             }
             else
             {
-                bgmSource.Play();
+                foreach (AudioSource source in bgmSources)
+                {
+                    source.Play();
+                }
             }
         }
     }
@@ -44,7 +50,10 @@ public class SoundManager
         set
         {
             bgmVolume  = value; 
-            bgmSource.volume = bgmVolume;
+            foreach(AudioSource source in bgmSources)
+            {
+                source.volume = bgmVolume;
+            }
         }
     }
 
@@ -65,15 +74,15 @@ public class SoundManager
     public SoundManager()
     {
         clips = new Dictionary<string, AudioClip>();
-        bgmSource = GameObject.Find("game").GetComponent<AudioSource>();
-
+        bgmSources = new List<AudioSource>() { GameObject.Find("game").GetComponent<AudioSource>() };
+        bgmSources[0].playOnAwake = false;
         isStop = false;
         bgmVolume = 1;
         effectVolume = 1;
     }
 
     //播放bgm
-    public void PlayBGM(string name)
+    public void PlayBGM(string name, bool isLoop)
     {
         if(isStop)
         {
@@ -86,7 +95,66 @@ public class SoundManager
             AudioClip clip = (AudioClip)Resources.Load<AudioClip>($"Sounds/{name}");
             clips.Add(name,clip);
         }
-        bgmSource.clip = clips[name];
-        bgmSource.Play();
+        AudioSource audioSource = null;
+        for(int i = 0; i<bgmSources.Count; i++)
+        {
+            if (bgmSources[i].isPlaying == false) 
+                audioSource = bgmSources[i];
+        }
+        if (audioSource == null)
+        {
+            audioSource = GameObject.Find("game").AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            bgmSources.Add(audioSource);
+        }
+        audioSource.loop = isLoop;
+        audioSource.clip = clips[name];
+        audioSource.Play();
     }
+
+
+    public void StopBgm(string name)
+    {
+        foreach (var item in bgmSources)
+        {
+            if (item.clip == clips[name] && item.isPlaying)
+            {
+                item.Stop();
+                return;
+            }
+        }
+    }
+
+    public bool IsPlaying(string name)
+    {
+        if (!clips.ContainsKey(name))
+            return false;
+        foreach (var item in bgmSources)
+        {
+            if(item.clip == clips[name] && item.isPlaying)
+                return true;
+        }
+
+        return false;
+    }
+
+    public AudioSource GetAudioSourceByName(string name)
+    {
+        foreach (var item in bgmSources)
+        {
+            if (item.clip == clips[name])
+                return item;
+        }
+        return null;
+    }
+
+    public void SetBgmVolume(string name, float val)
+    {
+        AudioSource source = GetAudioSourceByName(name);
+        if (source != null && source.isPlaying)
+        {
+            source.volume = val;
+        }
+    }
+
 }

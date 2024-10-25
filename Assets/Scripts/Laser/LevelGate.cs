@@ -8,10 +8,13 @@ public class LevelGate : BaseLaserInstrument
     public bool isPassed;
     public bool isHited;
     public int level;
+    public bool isUp;
     private bool isOpen = false;
 
     private Vector3 startPosition;
-    public Vector3 endPosition;
+    private Vector3 endPosition;
+
+    public float distance;
 
 
     private SpriteRenderer point;
@@ -40,6 +43,13 @@ public class LevelGate : BaseLaserInstrument
         LevelGateManager.instance.Register(this, isHited);
 
         startPosition = transform.position;
+        if (isUp)
+            endPosition = startPosition + Vector3.up * distance;
+        else
+            endPosition = startPosition + Vector3.down * distance;
+
+
+
 
         if (GameScene.gameData.level > level)
         {
@@ -77,9 +87,13 @@ public class LevelGate : BaseLaserInstrument
             }
         }
 
-        if(isOpen)
+        if(isOpen && level == GameScene.gameData.level - 1)
         {
             transform.position = Vector3.MoveTowards(transform.position, endPosition, speed * Time.deltaTime);
+        }
+        else if(isOpen)
+        {
+            transform.position = endPosition;
         }
         else
         {

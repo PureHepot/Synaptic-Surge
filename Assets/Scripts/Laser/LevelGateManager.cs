@@ -13,6 +13,11 @@ public class LevelGateManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        if (!GameApp.SoundManager.IsPlaying(Defines.LbBackground))
+        {
+            GameApp.SoundManager.PlayBGM(Defines.LbBackground, true);
+            GameApp.SoundManager.SetBgmVolume(Defines.LbBackground, 0.5f);
+        }
     }
 
 

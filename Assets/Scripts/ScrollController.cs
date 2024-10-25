@@ -13,13 +13,13 @@ public class ScrollController : MonoBehaviour
     {
         Vector3 cameraPosition = mainCamera.transform.position;
         // 检测鼠标是否在左侧区域
-        if (Input.mousePosition.x <= 269f )
+        if (Input.mousePosition.x <= 200f )
         {
             cameraPosition.x -= scrollSpeed * Time.deltaTime;
             cameraPosition.x = Mathf.Max(cameraPosition.x, minX); // 限制x不小于0
         }
         // 检测鼠标是否在右侧区域
-        else if (Input.mousePosition.x >= 1649f)
+        else if (Input.mousePosition.x >= 1750f)
         {
             // 向右移动摄像头
             cameraPosition.x += scrollSpeed * Time.deltaTime;
