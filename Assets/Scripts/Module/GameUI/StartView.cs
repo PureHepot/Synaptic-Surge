@@ -13,7 +13,6 @@ public class StartView : BaseView
         base.OnAwake();
 
         Find<Button>("bg/StartButton").onClick.AddListener(onStartGameBtn);
-        Find<Button>("bg/ContinueButton").onClick.AddListener(onContinueBtn);
         Find<Button>("bg/ExitButton").onClick.AddListener(onQuitGameBtn);
     }
 
@@ -22,10 +21,8 @@ public class StartView : BaseView
     {
         //播放
         GameApp.SoundManager.PlayBGM(Defines.UIButton,false);
-        //关闭开始界面
-        GameApp.ViewManager.Close(ViewId);
 
-        LevelLoader.Instance.LoadNextLevel("ChoiceMenu");
+        LevelLoader.Instance.LoadNextLevel("ChoiceMenu", ViewId);
         //LoadingModel loadingModel = new LoadingModel();
         //loadingModel.SceneName = "ChoiceMenu";
         //Controller.ApplyControllerFunc(ControllerType.Loading,Defines.LoadingScene,loadingModel);

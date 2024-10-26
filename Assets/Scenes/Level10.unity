@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7603195949758094425, guid: 15ef578da9237454387a7a7b4eaef78f, type: 3}
       propertyPath: powerColor
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7603195949758094425, guid: 15ef578da9237454387a7a7b4eaef78f, type: 3}
       propertyPath: poweredObj
@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 1880977527}
     - target: {fileID: 7746250760890408165, guid: 15ef578da9237454387a7a7b4eaef78f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.0511875
+      value: 8.165
       objectReference: {fileID: 0}
     - target: {fileID: 7746250760890408165, guid: 15ef578da9237454387a7a7b4eaef78f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1949,7 +1949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 827997111564095982, guid: faa2c17eba48c664db1fc5e6eb0605a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.87
+      value: 7.715
       objectReference: {fileID: 0}
     - target: {fileID: 827997111564095982, guid: faa2c17eba48c664db1fc5e6eb0605a8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2508,7 +2508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7603195949758094425, guid: 15ef578da9237454387a7a7b4eaef78f, type: 3}
       propertyPath: powerColor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7603195949758094425, guid: 15ef578da9237454387a7a7b4eaef78f, type: 3}
       propertyPath: poweredObj
@@ -2516,7 +2516,7 @@ PrefabInstance:
       objectReference: {fileID: 1656112708}
     - target: {fileID: 7746250760890408165, guid: 15ef578da9237454387a7a7b4eaef78f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.0511875
+      value: 8.165
       objectReference: {fileID: 0}
     - target: {fileID: 7746250760890408165, guid: 15ef578da9237454387a7a7b4eaef78f, type: 3}
       propertyPath: m_LocalPosition.y

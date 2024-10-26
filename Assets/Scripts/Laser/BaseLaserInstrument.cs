@@ -88,10 +88,15 @@ public class BaseLaserInstrument : MonoBehaviour
         if (isMouseOver)
             if (scrollInput != 0 && isRotatable)
             {
-                Quaternion targetRotation = Quaternion.Euler(0, 0, rotateAngle += scrollInput * 40);
-
-                transform.rotation = targetRotation;
+                RotateMethod(scrollInput);
             }
+    }
+
+    protected virtual void RotateMethod(float scrollInput)
+    {
+        Quaternion targetRotation = Quaternion.Euler(0, 0, rotateAngle += scrollInput * 40);
+
+        transform.rotation = targetRotation;
     }
 
     //被激光击中效果
@@ -165,6 +170,29 @@ public class BaseLaserInstrument : MonoBehaviour
             {
                 HitLasers.Remove(HitLasers[i]);
             }
+        }
+    }
+
+    public Color GetColor(LaserColor colorEnum)
+    {
+        switch (colorEnum)
+        {
+            case LaserColor.Red:
+                return UnityEngine.Color.red;
+            case LaserColor.Green:
+                return UnityEngine.Color.green;
+            case LaserColor.Blue:
+                return UnityEngine.Color.blue;
+            case LaserColor.Yellow:
+                return new Color(1, 1, 0, 1);
+            case LaserColor.Cyan:
+                return UnityEngine.Color.cyan;
+            case LaserColor.Violet:
+                return UnityEngine.Color.magenta;
+            case LaserColor.White:
+                return UnityEngine.Color.white;
+            default:
+                return UnityEngine.Color.black;
         }
     }
 }

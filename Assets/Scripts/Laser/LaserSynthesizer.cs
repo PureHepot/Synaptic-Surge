@@ -120,28 +120,7 @@ public class LaserSynthesizer : BaseLaserInstrument
     }
 
 
-    public Color GetColor(LaserColor colorEnum)
-    {
-        switch (colorEnum)
-        {
-            case LaserColor.Red:
-                return UnityEngine.Color.red;
-            case LaserColor.Green:
-                return UnityEngine.Color.green;
-            case LaserColor.Blue:
-                return UnityEngine.Color.blue;
-            case LaserColor.Yellow:
-                return new Color(1,1,0,1);
-            case LaserColor.Cyan:
-                return UnityEngine.Color.cyan;
-            case LaserColor.Violet:
-                return UnityEngine.Color.magenta;
-            case LaserColor.White:
-                return UnityEngine.Color.white;
-            default:
-                return UnityEngine.Color.black;
-        }
-    }
+    
 
     public LaserColor AddColors(LaserColor color1, LaserColor color2)
     {

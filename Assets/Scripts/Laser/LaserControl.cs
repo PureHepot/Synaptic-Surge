@@ -17,6 +17,8 @@ public enum LaserColor
 
 public enum BuildType
 {
+    Converter,
+    TriggerTower,
     Refractor,
     Diffuser,
     Tower
@@ -53,6 +55,7 @@ public class LaserControl : MonoBehaviour
 
     //激光获取的信息
     public List<HitInfo> hitInfoes = new List<HitInfo>();
+    public HitInfo lastHitInfo;
 
     private int hitCount;
     public int HitCount
@@ -183,7 +186,7 @@ public class LaserControl : MonoBehaviour
             hit.transform.GetComponent<BaseLaserInstrument>().OnLaserHit(this);
             laserEndRotation = Vector2.Angle(direction, hit.normal);//获取发射方向与法线的角度
 
-
+            lastHitInfo = hitInfoes[hitInfoes.Count - 1];
             //获取撞击点后进行路线设置
             if(!isStop)
             {

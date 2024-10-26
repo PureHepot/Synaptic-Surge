@@ -20,9 +20,25 @@ public class LevelLoader : MonoBehaviour
         
     }
 
+    public void LoadNextLevel(string sceneName, int viewId)
+    {
+        StartCoroutine(LoadLevel(sceneName, viewId));
+    }
+
     public void LoadNextLevel(string sceneName)
     {
         StartCoroutine(LoadLevel(sceneName));
+    }
+
+    IEnumerator LoadLevel(string sceneName, int viewId)
+    {
+        m_Animator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(waitTime);
+
+        GameApp.ViewManager.Close(viewId);
+
+        SceneManager.LoadScene(sceneName);
     }
 
     IEnumerator LoadLevel(string sceneName)
