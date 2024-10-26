@@ -65,6 +65,7 @@ public class BaseLaserInstrument : MonoBehaviour
         {
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 moveVec = (cursorPos - (Vector2)transform.position) * 10;
+            if (moveVec.magnitude > 15) moveVec = moveVec.normalized * 15;
             GetComponent<Rigidbody2D>().velocity = moveVec;
         }
     }

@@ -13,6 +13,7 @@ public class Door : BaseLaserInstrument
     public float speed;
 
     public bool isHorizon = true;
+    public bool isInverse;
 
     private bool isOpen;
 
@@ -52,19 +53,41 @@ public class Door : BaseLaserInstrument
 
         newPositionL = isHorizon ? leftDoor.position + Vector3.left*distance : leftDoor.position + Vector3.up*distance;
         newPositionR = isHorizon ? rightDoor.position + Vector3.right*distance : rightDoor.position + Vector3.down*distance;
+
+        if(isInverse)
+        {
+            leftDoor.position = newPositionL;
+            rightDoor.position = newPositionR;
+        }
     }
 
     protected override void OnFrame()
     {
         if (isOpen)
         {
-            leftDoor.position = Vector3.MoveTowards(leftDoor.position, newPositionL, speed * Time.deltaTime);
-            rightDoor.position = Vector3.MoveTowards(rightDoor.position, newPositionR, speed * Time.deltaTime);
+            if (isInverse)
+            {
+                leftDoor.position = Vector3.MoveTowards(leftDoor.position, originPos[0], speed * Time.deltaTime);
+                rightDoor.position = Vector3.MoveTowards(rightDoor.position, originPos[1], speed * Time.deltaTime);
+            }
+            else
+            {
+                leftDoor.position = Vector3.MoveTowards(leftDoor.position, newPositionL, speed * Time.deltaTime);
+                rightDoor.position = Vector3.MoveTowards(rightDoor.position, newPositionR, speed * Time.deltaTime);
+            }
         }
         else
         {
-            leftDoor.position = Vector3.MoveTowards(leftDoor.position, originPos[0], speed * Time.deltaTime);
-            rightDoor.position = Vector3.MoveTowards(rightDoor.position, originPos[1], speed * Time.deltaTime);
+            if (isInverse)
+            {
+                leftDoor.position = Vector3.MoveTowards(leftDoor.position, newPositionL, speed * Time.deltaTime);
+                rightDoor.position = Vector3.MoveTowards(rightDoor.position, newPositionR, speed * Time.deltaTime);
+            }
+            else
+            {
+                leftDoor.position = Vector3.MoveTowards(leftDoor.position, originPos[0], speed * Time.deltaTime);
+                rightDoor.position = Vector3.MoveTowards(rightDoor.position, originPos[1], speed * Time.deltaTime);
+            }
         }
     }
 

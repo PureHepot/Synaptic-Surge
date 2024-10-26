@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public static bool isPause;
     public static bool isPass;
 
+    public static int lastPassLevel;
+
     private void OnDestroy()
     {
         // È·±£ÒÆ³ıÊÂ¼ş¼àÌıÆ÷£¬±ÜÃâÄÚ´æĞ¹Â©
@@ -78,7 +80,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator PasstheLevel()
     {
-        yield return new WaitForSeconds(2);
+        int a = int.Parse(Regex.Match(SceneManager.GetActiveScene().name, @"\d+").Value);
+        lastPassLevel = a;
+
+        yield return new WaitForSeconds(1.5f);
         GameApp.ViewManager.Open(ViewType.PassView);
     }
 

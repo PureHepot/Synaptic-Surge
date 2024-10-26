@@ -87,7 +87,7 @@ public class LevelGate : BaseLaserInstrument
             }
         }
 
-        if(isOpen && level == GameScene.gameData.level - 1)
+        if(isOpen && level == GameManager.lastPassLevel)
         {
             transform.position = Vector3.MoveTowards(transform.position, endPosition, speed * Time.deltaTime);
         }
