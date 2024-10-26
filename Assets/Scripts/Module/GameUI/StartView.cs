@@ -21,7 +21,7 @@ public class StartView : BaseView
     {
         //²¥·Å
         GameApp.SoundManager.PlayBGM(Defines.UIButton,false);
-
+        GameApp.SoundManager.StopBgm(Defines.StartBgm);
         LevelLoader.Instance.LoadNextLevel("ChoiceMenu", ViewId);
         //LoadingModel loadingModel = new LoadingModel();
         //loadingModel.SceneName = "ChoiceMenu";

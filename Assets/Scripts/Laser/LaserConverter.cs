@@ -11,6 +11,8 @@ public class LaserConverter : BaseLaserInstrument
 
     private bool isLeft = true;
 
+    public bool canRotate = true;
+
     public override void OnLaserHit(LaserControl laser)
     {
         base.OnLaserHit(laser);
@@ -34,7 +36,7 @@ public class LaserConverter : BaseLaserInstrument
         base.OnAwake();
         isLaserStart = true;
         isLaserEnd = true;
-        isRotatable = true;
+        isRotatable = canRotate;
         isMovable = true;
 
         lasers = new List<LaserControl>();

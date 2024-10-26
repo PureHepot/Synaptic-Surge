@@ -50,7 +50,6 @@ public class GameUIController : BaseController
     private void openStartView(System.Object[] arg)
     {
         GameApp.ViewManager.Open(ViewType.StartView, arg);
-        GameApp.ViewManager.Close(ViewType.StartView, arg);
     }
 
     //打开设置面板

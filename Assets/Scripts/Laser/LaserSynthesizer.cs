@@ -24,6 +24,8 @@ public class LaserSynthesizer : BaseLaserInstrument
 
     private LaserPair pair;
 
+    public bool canRotate = true;
+
 
     public override void OnLaserHit(LaserControl laser)
     {
@@ -60,7 +62,7 @@ public class LaserSynthesizer : BaseLaserInstrument
     {
         isLaserStart = true;
         isLaserEnd = false;
-        isRotatable = true;
+        isRotatable = canRotate;
         isMovable = true;
 
         points = new List<Transform>();

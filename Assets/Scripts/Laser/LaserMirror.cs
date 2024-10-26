@@ -45,7 +45,7 @@ public class LaserMirror : BaseLaserInstrument
 
     public override void OnLaserHit(LaserControl laser)
     {
-        laser.IsStop = false;
+        base.OnLaserHit(laser);
 
         newDirection = Vector2.Reflect(laser.hitInfoes[laser.HitCount-1].launchDirection, laser.hitInfoes[laser.HitCount - 1].hitSurfaceNormal);
         

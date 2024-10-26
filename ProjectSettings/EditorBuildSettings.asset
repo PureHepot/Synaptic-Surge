@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LaserTest.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/InitialMenu01.unity
+    guid: 248e176a78c40cb48982d5abc03224f6
   - enabled: 1
     path: Assets/Scenes/ChoiceMenu.unity
     guid: 29b3171241b4bb244be7e40088e0ddea
@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level12.unity
     guid: ef71f59c6f6fa9f4995155f70902accf
+  - enabled: 1
+    path: Assets/Scenes/Level13.unity
+    guid: e5a492d0d7bf9d849b28e203ca6a78b8
   m_configObjects: {}

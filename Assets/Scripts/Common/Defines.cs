@@ -21,4 +21,5 @@ public static class Defines
     public static readonly string LbBackground = "LbBackground";
     public static readonly string Light = "Light2";
     public static readonly string Charging = "Charging";
+    public static readonly string StartBgm = "StartBgm";
 }

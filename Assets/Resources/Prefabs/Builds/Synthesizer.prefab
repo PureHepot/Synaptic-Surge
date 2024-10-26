@@ -524,6 +524,7 @@ MonoBehaviour:
   hitLaser: {fileID: 0}
   laserColor: 0
   isMovable: 0
+  canRotate: 1
 --- !u!58 &3837989409762553580
 CircleCollider2D:
   m_ObjectHideFlags: 0

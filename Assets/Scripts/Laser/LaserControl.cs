@@ -186,7 +186,7 @@ public class LaserControl : MonoBehaviour
             hit.transform.GetComponent<BaseLaserInstrument>().OnLaserHit(this);
             laserEndRotation = Vector2.Angle(direction, hit.normal);//获取发射方向与法线的角度
 
-            lastHitInfo = hitInfoes[hitInfoes.Count - 1];
+            lastHitInfo = hitInfoes[hitCount - 1];
             //获取撞击点后进行路线设置
             if(!isStop)
             {

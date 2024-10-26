@@ -19,7 +19,7 @@ public class GameScene : MonoBehaviour
         {
             isLoaded = true;
             gameData = SaveSystem.LoadGame();
-            gameData.level = 11;
+            gameData.level = 3;
             DontDestroyOnLoad(gameObject);
             GameApp.Instance.Init();
         }
@@ -32,7 +32,7 @@ public class GameScene : MonoBehaviour
         //设置鼠标样式
         //Cursor.SetCursor(mouseTxt, Vector2.zero, CursorMode.Auto);
 
-        //GameApp.SoundManager.PlayBGM("login");
+        GameApp.SoundManager.PlayBGM(Defines.StartBgm, true);
 
         RegisterModule();//注册游戏中的控制器
 
