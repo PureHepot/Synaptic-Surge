@@ -64,6 +64,7 @@ public class LevelGate : BaseLaserInstrument
     {
         if (isPassed)
         {
+            GameApp.SoundManager.PlayBGM(Defines.DoorOpen, false);
             isOpen = !isOpen;
             if (isOpen) point.color = Color.green;
             else point.color = Color.red;
@@ -91,9 +92,13 @@ public class LevelGate : BaseLaserInstrument
         {
             transform.position = Vector3.MoveTowards(transform.position, endPosition, speed * Time.deltaTime);
         }
-        else if(isOpen)
+        else if(isOpen && LevelGateManager.instance.isStart)
         {
             transform.position = endPosition;
+        }
+        else if(isOpen)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, endPosition, speed * Time.deltaTime);
         }
         else
         {

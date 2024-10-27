@@ -22,4 +22,5 @@ public static class Defines
     public static readonly string Light = "Light2";
     public static readonly string Charging = "Charging";
     public static readonly string StartBgm = "StartBgm";
+    public static readonly string DoorOpen = "DoorOpen";
 }

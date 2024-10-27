@@ -10,6 +10,8 @@ public class LevelGateManager : MonoBehaviour
 
     public static LevelGateManager instance;
 
+    public bool isStart = true;
+
     private void Awake()
     {
         instance = this;
@@ -18,8 +20,14 @@ public class LevelGateManager : MonoBehaviour
             GameApp.SoundManager.PlayBGM(Defines.LbBackground, true);
             GameApp.SoundManager.SetBgmVolume(Defines.LbBackground, 0.5f);
         }
+        StartCoroutine(makeFalse());
     }
 
+    IEnumerator makeFalse()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isStart = false;
+    }
 
     public void Register(LevelGate gate, bool isHited)
     {
