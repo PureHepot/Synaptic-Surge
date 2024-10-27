@@ -32,18 +32,21 @@ public class PauseView : BaseView
     {
         GameApp.ViewManager.Close(ViewId);
         GameManager.isPause = !GameManager.isPause;
+        GameApp.SoundManager.PlayBGM(Defines.UIButton, false);
     }
 
     private void onRestartBtn()
     {
         LevelLoader.Instance.LoadNextLevel(SceneManager.GetActiveScene().name);
         GameApp.ViewManager.Close(ViewId);
+        GameApp.SoundManager.PlayBGM(Defines.UIButton, false);
     }
 
     private void onExitBtn()
     {
         LevelLoader.Instance.LoadNextLevel("ChoiceMenu");
         GameApp.ViewManager.Close(ViewId);
+        GameApp.SoundManager.PlayBGM(Defines.UIButton, false);
     }
 
 }

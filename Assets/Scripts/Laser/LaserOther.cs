@@ -45,4 +45,9 @@ public class LaserOther : BaseLaserInstrument
         }
     }
 
+    public bool CheckHitLaser()
+    {
+        return hitLaser != null && LaserManager.Instance.Check(hitLaser, this);
+    }
+
 }

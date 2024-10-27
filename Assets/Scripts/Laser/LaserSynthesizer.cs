@@ -94,7 +94,7 @@ public class LaserSynthesizer : BaseLaserInstrument
         {
             counter = 0f;
             for (int i = 0; i < points.Count; i++)
-                if (points[i].GetComponent<LaserOther>().hitLaser == null)
+                if (points[i].GetComponent<LaserOther>().CheckHitLaser() == false)
                 {
                     ResetLaser();
                 }

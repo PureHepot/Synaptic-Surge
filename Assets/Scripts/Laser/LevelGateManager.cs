@@ -25,6 +25,8 @@ public class LevelGateManager : MonoBehaviour
 
     IEnumerator makeFalse()
     {
+        if(GameScene.gameData.level != 1)
+            GameApp.SoundManager.PlayBGM(Defines.DoorOpen, false);
         yield return new WaitForSeconds(0.1f);
         isStart = false;
     }

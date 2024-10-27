@@ -13,6 +13,8 @@ public class MessageNotice : MonoBehaviour
 
     private Text txt;
 
+    public GameObject arrow;
+
     public float amplitude = 3.0f; // 振幅，决定了移动的最大高度
     public float frequency = 1.0f; // 频率，决定了周期的快慢
 
@@ -28,19 +30,15 @@ public class MessageNotice : MonoBehaviour
     void Start()
     {
         txt.text = message;
-        startPosition = transform.position;
+        startPosition = arrow.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         float y = Mathf.Sin(Time.time * frequency) * amplitude;
-        txt.transform.position = startPosition + new Vector3(0, y, 0);
+        arrow.transform.position = startPosition + new Vector3(0, y, 0);
 
-        if(Input.GetMouseButtonDown(0))
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void FirstLight()

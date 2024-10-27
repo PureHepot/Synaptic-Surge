@@ -10,16 +10,23 @@ public class PassView : BaseView
     public override void Open(params object[] args)
     {
         base.Open(args);
+        StartCoroutine(Exit() );    
+    }
+
+    IEnumerator Exit()
+    {
+        yield return new WaitForSeconds(1.5f);
+        onExit();
     }
 
     protected override void OnAwake()
     {
         base.OnAwake();
 
-        Find<Button>("bg/ExitBtn").onClick.AddListener(onExitBtn);
+        //Find<Button>("bg/ExitBtn").onClick.AddListener(onExit);
     }
 
-    private void onExitBtn()
+    private void onExit()
     {
         GameApp.ViewManager.Close(ViewId);
 
