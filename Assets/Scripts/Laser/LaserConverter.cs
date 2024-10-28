@@ -65,7 +65,7 @@ public class LaserConverter : BaseLaserInstrument
             LaserControl laser = Instantiate(Resources.Load<GameObject>("Prefabs/Laser/Laser"), transform).GetComponent<LaserControl>();
             lasers.Add(laser);
             lasers[lasers.Count - 1].buildType = BuildType.Converter;
-
+            laser.parentBuild = this;
             LaserManager.Instance.Register(laser, new LaserInfo()
             {
                 color = laserColor,
@@ -76,13 +76,16 @@ public class LaserConverter : BaseLaserInstrument
         int i = 0;
         foreach (var item in HitLasers)
         {
-            lasers[i].gameObject.SetActive(true);
-            lasers[i].UpdatePosition(GetLaunchPosition(item.lastHitInfo.hitPoint, item.lastHitInfo.launchDirection, 
-                                    transform.position, circleCollider.radius), item.lastHitInfo.launchDirection);
-            lasers[i].Color = ConvertColor(item.Color);
-            lasers[i].SetColor(lasers[i].Color);
-            
-            i++;
+            if (item.parentBuild != this && item.lastHitInfo != null)
+            {
+                lasers[i].gameObject.SetActive(true);
+                lasers[i].UpdatePosition(GetLaunchPosition(item.lastHitInfo.hitPoint, item.lastHitInfo.launchDirection,
+                                        transform.position, circleCollider.radius), item.lastHitInfo.launchDirection);
+                lasers[i].Color = ConvertColor(item.Color);
+                lasers[i].SetColor(lasers[i].Color);
+
+                i++;
+            }
         }
         while (i < lasers.Count)
         {

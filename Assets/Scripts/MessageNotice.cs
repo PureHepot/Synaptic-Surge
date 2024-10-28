@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -23,14 +24,16 @@ public class MessageNotice : MonoBehaviour
     private void Awake()
     {
         txt = GetComponentInChildren<Text>();
-        transform.parent.GetComponent<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        if(SceneManager.GetActiveScene().name != "ChoiceMenu")
+            transform.parent.GetComponent<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         
     }
 
     void Start()
     {
         txt.text = message;
-        startPosition = arrow.transform.position;
+        if(arrow != null)
+            startPosition = arrow.transform.position;
     }
 
     // Update is called once per frame

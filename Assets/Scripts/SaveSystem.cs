@@ -9,6 +9,12 @@ public class GameData
 {
     public bool isFirstPlay;
     public int level;
+
+    public GameData()
+    {
+        isFirstPlay = true;
+        level = 1;
+    }
 }
 
 // ¥ÊµµœµÕ≥¿‡

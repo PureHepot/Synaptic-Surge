@@ -49,7 +49,7 @@ public class LaserControl : MonoBehaviour
 
     //激光的建筑
     public BuildType buildType;
-
+    public BaseLaserInstrument parentBuild;
     //激光发射方向
     private Vector2 laserDirection;
 
@@ -177,6 +177,7 @@ public class LaserControl : MonoBehaviour
 
         if (hit)//通过反射检测获取两点之间的距离
         {
+            hitInfoes.Clear();
             RoadDFS(direction, hit);
             hitCount++;
             

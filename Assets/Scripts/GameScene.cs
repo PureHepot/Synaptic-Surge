@@ -17,9 +17,9 @@ public class GameScene : MonoBehaviour
         }
         else
         {
+            Screen.SetResolution(1920, 1080, true);
             isLoaded = true;
             gameData = SaveSystem.LoadGame();
-            gameData.level = 12;
             DontDestroyOnLoad(gameObject);
             GameApp.Instance.Init();
         }

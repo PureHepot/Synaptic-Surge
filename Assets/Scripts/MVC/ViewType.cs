@@ -12,5 +12,6 @@ public enum ViewType
     MessageView,
     LoadingView,
     PauseView,
-    PassView
+    PassView,
+    EnddingView
 }

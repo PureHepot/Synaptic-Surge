@@ -13,7 +13,7 @@ public class BaseLaserInstrument : MonoBehaviour
     public LaserControl hitLaser;
     protected List<LaserControl> HitLasers = new List<LaserControl>();
     public LaserColor laserColor = LaserColor.White;
-
+    
 
     //ÒÇÆ÷ÌØÐÔ
     protected bool isHitedbyLaser = false;
@@ -65,7 +65,7 @@ public class BaseLaserInstrument : MonoBehaviour
         {
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 moveVec = (cursorPos - (Vector2)transform.position) * 10;
-            if (moveVec.magnitude > 15) moveVec = moveVec.normalized * 15;
+            if (moveVec.magnitude > 20) moveVec = moveVec.normalized * 20;
             GetComponent<Rigidbody2D>().velocity = moveVec;
         }
     }

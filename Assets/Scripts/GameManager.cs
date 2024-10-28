@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     private bool isAllLightPowerOn()
     {
-        if(lights.Count <= 0) return false; 
+        if(lights.Count <= 0 || SceneManager.GetActiveScene().name == "ChoiceMenu") return false; 
         if (isPass) return false;
 
         foreach (LaserLight obj in lights)

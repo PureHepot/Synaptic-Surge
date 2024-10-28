@@ -1,5 +1,7 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +14,9 @@ public class LevelGateManager : MonoBehaviour
 
     public bool isStart = true;
 
+    public GameObject _camera;
+    private bool once = true;
+
     private void Awake()
     {
         instance = this;
@@ -21,6 +26,29 @@ public class LevelGateManager : MonoBehaviour
             GameApp.SoundManager.SetBgmVolume(Defines.LbBackground, 0.5f);
         }
         StartCoroutine(makeFalse());
+    }
+
+    private void Start()
+    {
+        
+    }
+
+
+    private void Update()
+    {
+        if (once)
+        {
+            foreach (LevelGate levelGate in levelGateList)
+            {
+                if (levelGate.level == GameScene.gameData.level)
+                {
+                    _camera.transform.DOMoveX(levelGate.transform.position.x, 1.5f);
+                    //_camera.transform.position += new Vector3(levelGate.transform.position.x - _camera.transform.position.x, _camera.transform.position.y, _camera.transform.position.z);
+                }
+            }
+            once = false;   
+        }
+
     }
 
     IEnumerator makeFalse()

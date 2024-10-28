@@ -32,6 +32,14 @@ public class GameUIController : BaseController
             Sorting_Order = 10,
             parentTF = GameApp.ViewManager.canvasTF
         });
+
+        GameApp.ViewManager.Register(ViewType.EnddingView, new ViewInfo()
+        {
+            PrefabName = "EnddingView",
+            controller = this,
+            Sorting_Order = 100,
+            parentTF = GameApp.ViewManager.canvasTF
+        });
         InitModuleEvent();//初始化模板事件
         InitGlobalEvent();//初始化全局事件
 
@@ -66,5 +74,10 @@ public class GameUIController : BaseController
     private void openPassView(System.Object[] arg)
     {
         GameApp.ViewManager.Open(ViewType.PassView, arg);
+    }
+
+    private void openEnddingView(System.Object[] arg)
+    {
+        GameApp.ViewManager.Open(ViewType.EnddingView, arg);
     }
 }
